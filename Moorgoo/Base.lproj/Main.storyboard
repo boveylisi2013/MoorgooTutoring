@@ -248,10 +248,13 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="PVb-Y8-4uo" kind="presentation" identifier="LogoutSuccessful" modalTransitionStyle="partialCurl" id="RoX-8j-c6E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9I-w1-p24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="267" y="432"/>
+            <point key="canvasLocation" x="228" y="432"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="geB-DA-ebX">
@@ -475,7 +478,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="okZ-5Z-5RS"/>
-        <segue reference="e4l-iv-apV"/>
+        <segue reference="RoX-8j-c6E"/>
+        <segue reference="3Gz-XJ-fDt"/>
     </inferredMetricsTieBreakers>
 </document>
