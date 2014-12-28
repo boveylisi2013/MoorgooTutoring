@@ -50,10 +50,40 @@
 }
 */
 
+// Helper method to check whether the string contains only numbers or not
+-(BOOL)onlyContainsNumber:(NSString *)string
+{
+    NSCharacterSet * _NumericOnly = [NSCharacterSet decimalDigitCharacterSet];
+    NSCharacterSet * myStringSet = [NSCharacterSet characterSetWithCharactersInString:string];
+    
+    if ([_NumericOnly isSupersetOfSet: myStringSet])  return true;
+    else return false;
+}
+
 -(IBAction)signUpUserPressed:(id)sender
 {
+    // The string contains all possible errors
+    NSString *errorString = @"";
+    
+    if (self.firstRegisterTextField.text.length == 0) {
+        errorString = [errorString stringByAppendingString:@"Please input your first name\n"];
+    }
+    if (self.lastRegisterTextField.text.length == 0) {
+        errorString = [errorString stringByAppendingString:@"Please input your last name\n"];
+    }
+    if (self.phoneRegisterTextField.text.length == 0) {
+        errorString = [errorString stringByAppendingString:@"Please input your phone number\n"];
+    }
+    else if(![self onlyContainsNumber:self.phoneRegisterTextField.text])
+    {
+        errorString = [errorString stringByAppendingString:@"Please input the correct phone number\n(with only number characters)\n"];
+    }
+    
     if (self.schoolRegisterTextField.text.length == 0) {
-        
+        errorString = [errorString stringByAppendingString:@"Please choose your school\n"];
+    }
+    if (self.departmentRegisterTextField.text.length == 0) {
+        errorString = [errorString stringByAppendingString:@"Please choose your department\n"];
     }
     
     PFUser *user = [PFUser user];
@@ -66,6 +96,17 @@
     [user setObject:self.schoolRegisterTextField.text forKey:@"school"];
     [user setObject:self.departmentRegisterTextField.text forKey:@"department"];
     
+    // Check whether the user inputs their information correctly or not
+    if ([errorString length] != 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                  message:errorString
+                                                  delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
             [self performSegueWithIdentifier:@"SignupSuccesful" sender:self];
@@ -73,6 +114,7 @@
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
+
 }
 
 #pragma mark - Picker View Data source
