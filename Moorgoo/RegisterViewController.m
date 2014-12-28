@@ -52,6 +52,10 @@
 
 -(IBAction)signUpUserPressed:(id)sender
 {
+    if (self.schoolRegisterTextField.text.length == 0) {
+        
+    }
+    
     PFUser *user = [PFUser user];
     [user setObject:self.firstRegisterTextField.text forKey:@"firstName"];
     [user setObject:self.lastRegisterTextField.text forKey:@"lastName"];
