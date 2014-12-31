@@ -181,7 +181,7 @@
 
 -(void)pickerDoneClicked
 {
-    NSLog(@"Done Clicked");
+    //NSLog(@"Done Clicked");
     [schoolRegisterTextField resignFirstResponder];
 }
 
@@ -203,7 +203,7 @@
             [pickerSchoolArray addObjectsFromArray:[objects valueForKey:@"school"]];
             [pickerSchoolArray insertObject:@"" atIndex:0];
             [pickerSchoolArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            NSLog(@"Successfully retrieved: %@", pickerSchoolArray);
+            //NSLog(@"Successfully retrieved: %@", pickerSchoolArray);
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             NSLog(@"Error: %@", errorString);
@@ -240,7 +240,7 @@
 
 -(void)pickerDoneClicked2
 {
-    NSLog(@"Done Clicked");
+    //NSLog(@"Done Clicked");
     [departmentRegisterTextField resignFirstResponder];
 }
 
@@ -252,7 +252,7 @@
             [pickerDepartmentArray addObjectsFromArray:[objects valueForKey:@"department"]];
             [pickerDepartmentArray insertObject:@"" atIndex:0];
             [pickerDepartmentArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            NSLog(@"Successfully retrieved: %@", pickerDepartmentArray);
+            //NSLog(@"Successfully retrieved: %@", pickerDepartmentArray);
         } else {
             NSString *errorString = [[error userInfo] objectForKey:@"error"];
             NSLog(@"Error: %@", errorString);

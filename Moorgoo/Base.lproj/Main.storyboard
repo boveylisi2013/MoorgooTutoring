@@ -168,6 +168,9 @@
                                     <color key="titleColor" red="0.35526916060000002" green="0.77990989960000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="ufK-zP-QPQ" kind="push" identifier="BeATutor" id="pDZ-qC-HIx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JjC-7l-prm">
                                 <rect key="frame" x="0.0" y="435" width="600" height="50"/>
@@ -255,6 +258,99 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F9I-w1-p24" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="228" y="432"/>
+        </scene>
+        <!--Apply Tutor View Controller-->
+        <scene sceneID="Z4z-1E-WJm">
+            <objects>
+                <viewController id="ufK-zP-QPQ" customClass="ApplyTutorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Q9J-8I-Me8"/>
+                        <viewControllerLayoutGuide type="bottom" id="DHA-lV-Czh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wde-Ea-JHU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="936"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" directionalLockEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SFq-Mh-W4w">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="936"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9N6-uL-Ahi" userLabel="Content View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="936"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose the class that you want to teach:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww1-0K-5kk">
+                                                <rect key="frame" x="8" y="8" width="341" height="21"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="input and choose the specific class" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ukZ-Jt-Qfw">
+                                                <rect key="frame" x="8" y="37" width="341" height="30"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="bab-Mv-xEj">
+                                                <rect key="frame" x="8" y="75" width="274" height="337"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <prototypes>
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="classItem" id="O7s-TE-lSn">
+                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="O7s-TE-lSn" id="cNe-Nc-hxm">
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fe6-SS-5dq">
+                                                                    <rect key="frame" x="14" y="12" width="255" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="ufK-zP-QPQ" id="xLg-NR-GJi"/>
+                                                    <outlet property="delegate" destination="ufK-zP-QPQ" id="n7q-oD-G2L"/>
+                                                </connections>
+                                            </tableView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="600" id="K0q-pt-Pr2"/>
+                                            <constraint firstAttribute="height" constant="936" id="K3O-sZ-dJP"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="9N6-uL-Ahi" firstAttribute="top" secondItem="SFq-Mh-W4w" secondAttribute="top" id="VzK-BS-GSO"/>
+                                    <constraint firstAttribute="trailing" secondItem="9N6-uL-Ahi" secondAttribute="trailing" id="c6c-S7-KnH"/>
+                                    <constraint firstItem="9N6-uL-Ahi" firstAttribute="leading" secondItem="SFq-Mh-W4w" secondAttribute="leading" id="dCg-AW-7Ij"/>
+                                    <constraint firstAttribute="bottom" secondItem="9N6-uL-Ahi" secondAttribute="bottom" id="mFc-BQ-bGp"/>
+                                    <constraint firstAttribute="width" constant="600" id="nRR-VM-HCi"/>
+                                    <constraint firstAttribute="height" constant="936" id="qjL-M6-6F7"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SFq-Mh-W4w" firstAttribute="leading" secondItem="wde-Ea-JHU" secondAttribute="leadingMargin" constant="-16" id="QMB-QX-PVH"/>
+                            <constraint firstItem="SFq-Mh-W4w" firstAttribute="top" secondItem="Q9J-8I-Me8" secondAttribute="bottom" id="dCR-0v-904"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SFq-Mh-W4w" secondAttribute="trailing" constant="-16" id="svp-py-xpB"/>
+                            <constraint firstItem="DHA-lV-Czh" firstAttribute="top" secondItem="SFq-Mh-W4w" secondAttribute="bottom" id="xH2-cN-eAI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="UVL-ai-cOb"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="1000"/>
+                    <connections>
+                        <outlet property="classesTableView" destination="bab-Mv-xEj" id="lTL-SX-Skl"/>
+                        <outlet property="scroller" destination="SFq-Mh-W4w" id="yUi-VF-1J6"/>
+                        <outlet property="specificClassTextField" destination="ukZ-Jt-Qfw" id="Xlg-qA-RfX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HvC-iB-Tom" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1027" y="431"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="geB-DA-ebX">
@@ -479,6 +575,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="RoX-8j-c6E"/>
-        <segue reference="3Gz-XJ-fDt"/>
+        <segue reference="e4l-iv-apV"/>
     </inferredMetricsTieBreakers>
 </document>

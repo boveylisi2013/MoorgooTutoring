@@ -30,6 +30,7 @@
 		13A90E3C1A4D41EF00CCCE1B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A90E3A1A4D41EF00CCCE1B /* LaunchScreen.xib */; };
 		13A90E481A4D41EF00CCCE1B /* MoorgooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A90E471A4D41EF00CCCE1B /* MoorgooTests.m */; };
 		13A90E531A4DD0E300CCCE1B /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A90E521A4DD0E300CCCE1B /* RegisterViewController.m */; };
+		426B82221A5203EA009E30FE /* ApplyTutorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426B82211A5203EA009E30FE /* ApplyTutorViewController.m */; };
 		429245501A4F74C8000CA0B7 /* EntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,8 @@
 		13A90E471A4D41EF00CCCE1B /* MoorgooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoorgooTests.m; sourceTree = "<group>"; };
 		13A90E511A4DD0E300CCCE1B /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		13A90E521A4DD0E300CCCE1B /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		426B82201A5203EA009E30FE /* ApplyTutorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTutorViewController.h; sourceTree = "<group>"; };
+		426B82211A5203EA009E30FE /* ApplyTutorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyTutorViewController.m; sourceTree = "<group>"; };
 		4292454E1A4F74C8000CA0B7 /* EntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntranceViewController.h; sourceTree = "<group>"; };
 		4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntranceViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -166,6 +169,7 @@
 			children = (
 				13A90E2F1A4D41EF00CCCE1B /* AppDelegate.h */,
 				13A90E301A4D41EF00CCCE1B /* AppDelegate.m */,
+				426B82231A5203FC009E30FE /* Tutor */,
 				13A90E541A4DD7D400CCCE1B /* Login/Register */,
 				13439B341A4E040700DECC9A /* Home */,
 				13A90E381A4D41EF00CCCE1B /* Images.xcassets */,
@@ -214,6 +218,15 @@
 				4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */,
 			);
 			name = Login/Register;
+			sourceTree = "<group>";
+		};
+		426B82231A5203FC009E30FE /* Tutor */ = {
+			isa = PBXGroup;
+			children = (
+				426B82201A5203EA009E30FE /* ApplyTutorViewController.h */,
+				426B82211A5203EA009E30FE /* ApplyTutorViewController.m */,
+			);
+			name = Tutor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +333,7 @@
 				13A90E311A4D41EF00CCCE1B /* AppDelegate.m in Sources */,
 				429245501A4F74C8000CA0B7 /* EntranceViewController.m in Sources */,
 				13A90E2E1A4D41EF00CCCE1B /* main.m in Sources */,
+				426B82221A5203EA009E30FE /* ApplyTutorViewController.m in Sources */,
 				13439B371A4E046900DECC9A /* homeViewController.m in Sources */,
 				13A90E531A4DD0E300CCCE1B /* RegisterViewController.m in Sources */,
 			);

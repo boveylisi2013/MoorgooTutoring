@@ -7,9 +7,12 @@
 //
 
 #import "homeViewController.h"
+#import "ApplyTutorViewController.h"
 
-@interface homeViewController ()
-
+@interface homeViewController () <ApplyTutorViewControllerDelegate>
+{
+    NSMutableArray *classes;
+}
 @end
 
 @implementation homeViewController
@@ -17,6 +20,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    // Former Trial: Tried to query the data in homeViewController and passed it into the
+    // property(Would make classItems a property in this case) of ApplyTutorViewController
+    // in order to get the data done before tha table view load the data, but this way did not work
+    // classes = [[NSMutableArray alloc] init];
+    // [self getClasses:classes];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -39,5 +48,34 @@
     [PFUser logOut];
     [self performSegueWithIdentifier:@"LogoutSuccessful" sender:self];
 }
+
+// Former Trial: Tried to query the data in homeViewController and passed it into the
+// property(Would make classItems a property in this case) of ApplyTutorViewController
+// in order to get the data done before tha table view load the data, but this way did not work
+//-(void)getClasses:(NSMutableArray *)array
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"classes"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        if (!error) {
+//            [array addObjectsFromArray:[objects valueForKey:@"classname"]];
+//            [array insertObject:@"" atIndex:0];
+//            [array sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+//            NSLog(@"Successfully retrieved: %@", array);
+//        } else {
+//            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+//            NSLog(@"Error: %@", errorString);
+//        }
+//    }];
+//}
+//
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+//    if ([segue.identifier isEqualToString:@"BeATutor"])
+//    {
+//        ApplyTutorViewController *controller = (ApplyTutorViewController *)segue.destinationViewController;
+//        controller.delegate = self;
+//        //controller.classItems = classes;
+//    }
+//}
 
 @end
