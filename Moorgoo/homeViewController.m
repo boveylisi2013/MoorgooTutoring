@@ -48,6 +48,19 @@
     [PFUser logOut];
     [self performSegueWithIdentifier:@"LogoutSuccessful" sender:self];
 }
+- (IBAction)BeTutorButtonPressed:(UIButton *)sender {
+    PFUser *currentUser = [PFUser currentUser];
+    if ([[currentUser valueForKey:@"isTutor"]  isEqual: @(TRUE)])
+    {
+        [self performSegueWithIdentifier:@"BeATutor" sender:self];
+        NSLog(@"is a tutor");
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"NotTutor" sender:self];
+        NSLog(@"is a NOT tutor");
+    }
+}
 
 // Former Trial: Tried to query the data in homeViewController and passed it into the
 // property(Would make classItems a property in this case) of ApplyTutorViewController

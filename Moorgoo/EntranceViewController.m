@@ -16,7 +16,36 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"lajollafull" ofType:@"gif"];
+    NSData *gif = [NSData dataWithContentsOfFile:filePath];
+    
+    UIWebView *webViewBG = [[UIWebView alloc] initWithFrame:self.view.frame];
+    [webViewBG loadData:gif MIMEType:@"image/gif" textEncodingName:nil baseURL:nil];
+    webViewBG.userInteractionEnabled = NO;
+    [self.view addSubview:webViewBG];
+    
+    
+    UIView *filter = [[UIView alloc] initWithFrame:self.view.frame];
+    filter.backgroundColor = [UIColor blackColor];
+    filter.alpha = 0.05;
+    [self.view addSubview:filter];
+    
+    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 100)];
+    welcomeLabel.text = @"MOORGOO";
+    welcomeLabel.textColor = [UIColor whiteColor];
+    welcomeLabel.font = [UIFont systemFontOfSize:50];
+    welcomeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:welcomeLabel];
+    
+    self.signinButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.signinButton.layer.borderWidth = 2.0f;
+
+    self.registerButton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.registerButton.layer.borderWidth = 2.0f;
+    
+    [self.view addSubview:self.signinButton];
+    [self.view addSubview:self.registerButton];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,13 +54,18 @@
 }
 
 /*
-#pragma mark - Navigation
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
-*/
 
 @end

@@ -10,4 +10,7 @@
 
 @interface EntranceViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *signinButton;
+@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+
 @end

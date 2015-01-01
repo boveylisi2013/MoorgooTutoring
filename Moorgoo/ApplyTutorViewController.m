@@ -10,8 +10,11 @@
 
 @interface ApplyTutorViewController ()
 {
+    // Arrays for tableView
     NSMutableArray *classItems;
     NSMutableArray *stableClassItems;
+    
+    // 
 }
 @end
 
@@ -19,11 +22,11 @@
 
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    [scroller setScrollEnabled:YES];
-    [scroller setContentSize:CGSizeMake(600, 1000)];
-    [scroller setContentOffset: CGPointMake(0, scroller.contentOffset.y)];
-    scroller.directionalLockEnabled = YES;
+//    [super viewDidLoad];
+//    [scroller setScrollEnabled:YES];
+//    [scroller setContentSize:CGSizeMake(600, 1000)];
+//    [scroller setContentOffset: CGPointMake(0, scroller.contentOffset.y)];
+//    scroller.directionalLockEnabled = YES;
     
     // Add the method to detect change in the specficClassTextField
     [self.specificClassTextField addTarget:self
