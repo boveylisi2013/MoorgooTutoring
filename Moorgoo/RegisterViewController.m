@@ -95,6 +95,7 @@
     [user setObject:[NSNumber numberWithInt:[self.phoneRegisterTextField.text intValue]] forKey:@"phone"];
     [user setObject:self.schoolRegisterTextField.text forKey:@"school"];
     [user setObject:self.departmentRegisterTextField.text forKey:@"department"];
+    [user setObject: [NSNumber numberWithBool:NO] forKey:@"isTutor"];
     
     // Check whether the user inputs their information correctly or not
     if ([errorString length] != 0) {

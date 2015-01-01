@@ -14,7 +14,9 @@
     NSMutableArray *classItems;
     NSMutableArray *stableClassItems;
     
-    // 
+    // Array to store the classes that
+    // the tutor added
+    NSMutableArray *addedClasses;
 }
 @end
 
@@ -22,11 +24,9 @@
 
 
 - (void)viewDidLoad {
-//    [super viewDidLoad];
-//    [scroller setScrollEnabled:YES];
-//    [scroller setContentSize:CGSizeMake(600, 1000)];
-//    [scroller setContentOffset: CGPointMake(0, scroller.contentOffset.y)];
-//    scroller.directionalLockEnabled = YES;
+    [super viewDidLoad];
+    
+    scroller.delegate = self;
     
     // Add the method to detect change in the specficClassTextField
     [self.specificClassTextField addTarget:self
@@ -47,12 +47,25 @@
     self.classesTableView.delegate = self;
     self.classesTableView.dataSource = self;
     
-    
-    //if(classItems == nil) NSLog(@"classItems is nil");
-    //else NSLog(@"in APPLYTUTORVIEWCONTROLLER in viewdidload: %@",classItems);
+    addedClasses = [[NSMutableArray alloc]init];
+    // Hide the classes and delete buttons unless classes are added
+    [self.chosenClass_1 setHidden:YES];
+    [self.chosenClass_2 setHidden:YES];
+    [self.chosenClass_3 setHidden:YES];
+    [self.chosenClass_4 setHidden:YES];
+    [self.deleteButton_1 setHidden:YES];
+    [self.deleteButton_2 setHidden:YES];
+    [self.deleteButton_3 setHidden:YES];
+    [self.deleteButton_4 setHidden:YES];
 
 }
 
+// Disable the horizontal scroll
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    [scroller setContentOffset: CGPointMake(0, scroller.contentOffset.y)];
+    scroller.directionalLockEnabled = YES;
+}
 
 // Method to query data from parse
 -(void)getClasses:(NSMutableArray *)array
@@ -109,6 +122,91 @@
     return !([string_1 rangeOfString:string_2].location == NSNotFound);
 }
 
+#pragma mark- buttonPressed methods
+- (IBAction)AddButtonPressed:(UIButton *)sender
+{
+    // First, check whether the user input the correct class
+    NSString *inputString = [self.specificClassTextField.text uppercaseString];
+    if(![stableClassItems containsObject:inputString] || inputString.length == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please input & choose the correct class"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    // Second, check whether the tutor reach the limit of choosing 4 classes
+    if ([addedClasses count] == 4)
+    {
+        // Check whether the user inputs their information correctly or not
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"You can add at most 4 classes"
+                                                        delegate:nil
+                                               cancelButtonTitle:@"OK"
+                                               otherButtonTitles:nil];
+            [alert show];
+            return;
+    }
+    
+    [addedClasses addObject:inputString];
+    if (self.chosenClass_1.hidden == YES)
+    {
+        [self.chosenClass_1 setHidden:NO];
+        self.chosenClass_1.text = inputString;
+        [self.deleteButton_1 setHidden:NO];
+    }
+    else if(self.chosenClass_2.hidden == YES)
+    {
+        [self.chosenClass_2 setHidden:NO];
+        self.chosenClass_2.text = inputString;
+        [self.deleteButton_2 setHidden:NO];
+    }
+    else if(self.chosenClass_3.hidden == YES)
+    {
+        [self.chosenClass_3 setHidden:NO];
+        self.chosenClass_3.text = inputString;
+        [self.deleteButton_3 setHidden:NO];
+    }
+    else if(self.chosenClass_4.hidden == YES)
+    {
+        [self.chosenClass_4 setHidden:NO];
+        self.chosenClass_4.text = inputString;
+        [self.deleteButton_4 setHidden:NO];
+    }
+}
+
+- (IBAction)deleteButton1Pressed:(UIButton *)sender
+{
+    [addedClasses removeObject:self.chosenClass_1.text];
+    [self.chosenClass_1 setHidden:YES];
+    [self.deleteButton_1 setHidden:YES];
+}
+
+- (IBAction)deleteButton2Pressed:(UIButton *)sender
+{
+    [addedClasses removeObject:self.chosenClass_2.text];
+    [self.chosenClass_2 setHidden:YES];
+    [self.deleteButton_2 setHidden:YES];
+}
+
+- (IBAction)deleteButton3Pressed:(UIButton *)sender
+{
+    [addedClasses removeObject:self.chosenClass_3.text];
+    [self.chosenClass_3 setHidden:YES];
+    [self.deleteButton_3 setHidden:YES];
+}
+
+- (IBAction)deleteButton4Pressed:(UIButton *)sender
+{
+    [addedClasses removeObject:self.chosenClass_4.text];
+    [self.chosenClass_4 setHidden:YES];
+    [self.deleteButton_4 setHidden:YES];
+}
+
+
 #pragma mark- classTableView delegete methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -132,7 +230,7 @@
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     
     if ([classItems count] != 0)  label.text = classItems[indexPath.row];
-    else  label.text = @"The data has not been loaded yet";
+    else  label.text = @"No class found";
     
     return cell;
 }

@@ -13,11 +13,11 @@
 @end
 
 
-@interface ApplyTutorViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
-//{
-//    IBOutlet UIScrollView *scroller;
-//    
-//}
+@interface ApplyTutorViewController : UIViewController <UIScrollViewDelegate, UITableViewDelegate,UITableViewDataSource>
+{
+    IBOutlet UIScrollView *scroller;
+    
+}
 @property (weak, nonatomic) IBOutlet UITableView *classesTableView;
 @property (weak, nonatomic) IBOutlet UITextField *specificClassTextField;
 
@@ -27,6 +27,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *chosenClass_4;
 
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton_1;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton_2;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton_3;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton_4;
 
 
 
