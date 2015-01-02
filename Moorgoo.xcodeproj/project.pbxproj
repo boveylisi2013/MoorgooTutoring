@@ -34,6 +34,9 @@
 		42898D631A54BACB006E2DBC /* lajollafull.gif in Resources */ = {isa = PBXBuildFile; fileRef = 42898D621A54BACB006E2DBC /* lajollafull.gif */; };
 		42898D661A54C5A4006E2DBC /* StaticTutorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42898D651A54C5A4006E2DBC /* StaticTutorViewController.m */; };
 		429245501A4F74C8000CA0B7 /* EntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */; };
+		4299EA711A56295E00DB15D1 /* PickClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA6C1A56295E00DB15D1 /* PickClassViewController.m */; };
+		4299EA721A56295E00DB15D1 /* PickSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA6E1A56295E00DB15D1 /* PickSchoolViewController.m */; };
+		4299EA731A56295E00DB15D1 /* PickTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA701A56295E00DB15D1 /* PickTimeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,12 @@
 		42898D651A54C5A4006E2DBC /* StaticTutorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticTutorViewController.m; sourceTree = "<group>"; };
 		4292454E1A4F74C8000CA0B7 /* EntranceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntranceViewController.h; sourceTree = "<group>"; };
 		4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntranceViewController.m; sourceTree = "<group>"; };
+		4299EA6B1A56295E00DB15D1 /* PickClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickClassViewController.h; sourceTree = "<group>"; };
+		4299EA6C1A56295E00DB15D1 /* PickClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickClassViewController.m; sourceTree = "<group>"; };
+		4299EA6D1A56295E00DB15D1 /* PickSchoolViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickSchoolViewController.h; sourceTree = "<group>"; };
+		4299EA6E1A56295E00DB15D1 /* PickSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickSchoolViewController.m; sourceTree = "<group>"; };
+		4299EA6F1A56295E00DB15D1 /* PickTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickTimeViewController.h; sourceTree = "<group>"; };
+		4299EA701A56295E00DB15D1 /* PickTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickTimeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +181,7 @@
 		13A90E2A1A4D41EF00CCCE1B /* Moorgoo */ = {
 			isa = PBXGroup;
 			children = (
+				4299EA6A1A56292C00DB15D1 /* NeedTutor */,
 				42898D611A54BAA9006E2DBC /* Images */,
 				13A90E2F1A4D41EF00CCCE1B /* AppDelegate.h */,
 				13A90E301A4D41EF00CCCE1B /* AppDelegate.m */,
@@ -243,6 +253,19 @@
 				42898D621A54BACB006E2DBC /* lajollafull.gif */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		4299EA6A1A56292C00DB15D1 /* NeedTutor */ = {
+			isa = PBXGroup;
+			children = (
+				4299EA6D1A56295E00DB15D1 /* PickSchoolViewController.h */,
+				4299EA6E1A56295E00DB15D1 /* PickSchoolViewController.m */,
+				4299EA6B1A56295E00DB15D1 /* PickClassViewController.h */,
+				4299EA6C1A56295E00DB15D1 /* PickClassViewController.m */,
+				4299EA6F1A56295E00DB15D1 /* PickTimeViewController.h */,
+				4299EA701A56295E00DB15D1 /* PickTimeViewController.m */,
+			);
+			name = NeedTutor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,10 +373,13 @@
 				13A90E341A4D41EF00CCCE1B /* LoginViewController.m in Sources */,
 				13A90E311A4D41EF00CCCE1B /* AppDelegate.m in Sources */,
 				429245501A4F74C8000CA0B7 /* EntranceViewController.m in Sources */,
+				4299EA721A56295E00DB15D1 /* PickSchoolViewController.m in Sources */,
+				4299EA711A56295E00DB15D1 /* PickClassViewController.m in Sources */,
 				42898D661A54C5A4006E2DBC /* StaticTutorViewController.m in Sources */,
 				13A90E2E1A4D41EF00CCCE1B /* main.m in Sources */,
 				426B82221A5203EA009E30FE /* ApplyTutorViewController.m in Sources */,
 				13439B371A4E046900DECC9A /* homeViewController.m in Sources */,
+				4299EA731A56295E00DB15D1 /* PickTimeViewController.m in Sources */,
 				13A90E531A4DD0E300CCCE1B /* RegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -36,7 +36,58 @@
 
 - (IBAction)RequestButtonPressed:(UIButton *)sender
 {
+    //verify the existance
+    PFUser *currentUser = [PFUser currentUser];
     
+    PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+    [query whereKey:@"user_id" equalTo:currentUser.objectId];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error)
+        {
+            if(objects.count == 0)
+            {
+                PFObject *tutor = [PFObject objectWithClassName:@"tutor"];
+                
+                NSMutableArray *classes = [[NSMutableArray alloc] init];
+                [classes addObject:@"CSE 11"];
+                [classes addObject:@"CSE 30"];
+                [classes addObject:@"CSE 100"];
+                
+                NSMutableArray *availableDay = [[NSMutableArray alloc] init];
+                [availableDay addObject:@"Monday"];
+                [availableDay addObject:@"Tuesday"];
+                [availableDay addObject:@"Friday"];
+                
+                [tutor setObject:currentUser.objectId forKey:@"user_id"];
+                [tutor setObject:classes forKey:@"classes"];
+                [tutor setObject:availableDay forKey:@"availableDay"];
+                [tutor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded){
+                        NSLog(@"Object Uploaded!");
+                    }
+                    else{
+                        NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                        NSLog(@"Error: %@", errorString);
+                    }
+                }];
+            }
+            
+            NSString *errorString = @"Thank you for your application. We will contact you soon!";
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice"
+                                                            message:errorString
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+            
+        }
+        else
+        {
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            NSLog(@"Error: %@", errorString);
+        }
+    }];
 }
 
 

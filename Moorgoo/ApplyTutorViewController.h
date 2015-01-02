@@ -33,6 +33,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton_3;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton_4;
 
+@property (weak, nonatomic) IBOutlet UISwitch *mondaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *tuesdaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *wednesdaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *thursdaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *fridaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *saturdaySwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *sundaySwitch;
+
+
 
 
 

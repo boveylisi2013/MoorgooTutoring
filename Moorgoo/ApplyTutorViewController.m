@@ -141,7 +141,6 @@
     // Second, check whether the tutor reach the limit of choosing 4 classes
     if ([addedClasses count] == 4)
     {
-        // Check whether the user inputs their information correctly or not
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"You can add at most 4 classes"
                                                         delegate:nil
@@ -149,6 +148,18 @@
                                                otherButtonTitles:nil];
             [alert show];
             return;
+    }
+    
+    // Third, should not let user add the same class more than once
+    if([addedClasses containsObject:inputString])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"You have already added this class"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
     }
     
     [addedClasses addObject:inputString];
@@ -204,6 +215,12 @@
     [addedClasses removeObject:self.chosenClass_4.text];
     [self.chosenClass_4 setHidden:YES];
     [self.deleteButton_4 setHidden:YES];
+}
+
+
+- (IBAction)submitButtonPressed:(UIButton *)sender
+{
+    
 }
 
 
