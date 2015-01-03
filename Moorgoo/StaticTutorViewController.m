@@ -40,6 +40,7 @@
     PFUser *currentUser = [PFUser currentUser];
     
     PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+    [query setLimit:1000];
     [query whereKey:@"user_id" equalTo:currentUser.objectId];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error)

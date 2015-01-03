@@ -16,7 +16,7 @@
     NSMutableArray *stableClassItems;
     
     UIPickerView *helpPicker;
-    NSMutableArray *pickerHelpArray;
+    NSArray *pickerHelpArray;
 }
 @end
 
@@ -55,6 +55,7 @@
 -(void)getClasses:(NSMutableArray *)array
 {
     PFQuery *schoolQuery = [PFUser query];
+    [schoolQuery setLimit:1000];
     [schoolQuery whereKey:@"school" equalTo:self.school];
     [schoolQuery whereKey:@"isTutor" equalTo:[NSNumber numberWithBool:YES]];
     [schoolQuery findObjectsInBackgroundWithBlock:^(NSArray *schoolObjects, NSError *schoolError)
@@ -63,6 +64,7 @@
         if(!schoolError)
         {
             PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+            [query setLimit:1000];
             [query whereKey:@"user_id" containedIn:objectIdArray];
             [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error)
             {
@@ -100,15 +102,16 @@
 // this method is added as a selector to specficClassTextField
 -(void)textFieldDidChange:(UITextField *)textField
 {
+    BOOL textFieldIsEmpty = (self.pickHelpTextField.text.length == 0 || self.specificClassTextField.text.length == 0);
     //NSLog(@"THE TEXTFIELD IS CHANGED!!");
     if (textField.text.length == 0)
     {
         [self.tableView setHidden:YES];
-        self.next.enabled  = NO;
+        self.next.enabled = NO;
     }
     else
     {
-        self.next.enabled  = YES;
+        self.next.enabled = !textFieldIsEmpty;
 
         [self.tableView setHidden:NO];
         NSString *inputString = [textField.text uppercaseString];
@@ -163,12 +166,14 @@
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if([segue.identifier isEqualToString:@"schoolToClass"])
+    if([segue.identifier isEqualToString:@"classToTime"])
     {
         PickTimeViewController *controller = (PickTimeViewController *)segue.destinationViewController;
         controller.school = self.school;
         controller.course = self.specificClassTextField.text;
+        controller.help = self.pickHelpTextField.text;
     }
+    
 }
 
 #pragma mark- classTableView delegete methods
@@ -286,19 +291,9 @@
 }
 
 -(void)getHelp {
+    pickerHelpArray = [[NSMutableArray alloc] init];
+    pickerHelpArray = @[@"", @"Homework Help", @"Lab Assignment Help", @"Exam Review", @"Lecture Review", @"Project Help", @"Quiz Review"];
     
-    PFQuery *query = [PFQuery queryWithClassName:@"school"];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        if (!error) {
-            [pickerHelpArray addObjectsFromArray:[objects valueForKey:@"school"]];
-            [pickerHelpArray insertObject:@"" atIndex:0];
-            [pickerHelpArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            //NSLog(@"Successfully retrieved: %@", pickerDepartmentArray);
-        } else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            NSLog(@"Error: %@", errorString);
-        }
-    }];
 }
 
 @end

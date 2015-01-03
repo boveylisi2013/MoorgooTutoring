@@ -445,15 +445,71 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButtonPressed:" destination="WHD-1C-rHT" eventType="touchUpInside" id="OQo-Pi-xmn"/>
+                                </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="KmJ-fW-G9W">
+                                <rect key="frame" x="0.0" y="128" width="600" height="162"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="Zeh-dU-vbb"/>
+                                </constraints>
+                                <date key="date" timeIntervalSinceReferenceDate="441943141.52015197">
+                                    <!--2015-01-03 01:59:01 +0000-->
+                                </date>
+                            </datePicker>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="How many hours to be tutored?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83r-Ir-nfL">
+                                <rect key="frame" x="22" y="30" width="556" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HQb-Vl-7kW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIL-GC-LEg">
+                                <rect key="frame" x="16" y="92" width="579" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Mm7-Mm-Npk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available weekdays for this class:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VKy-Sh-8rk">
+                                <rect key="frame" x="16" y="68" width="257" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="TzV-0N-y90"/>
+                                    <constraint firstAttribute="width" constant="257" id="euK-Jp-aXf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="BIL-GC-LEg" firstAttribute="top" secondItem="VKy-Sh-8rk" secondAttribute="bottom" constant="3" id="2So-bj-ktS"/>
+                            <constraint firstItem="KmJ-fW-G9W" firstAttribute="leading" secondItem="gGr-Vy-yWf" secondAttribute="leadingMargin" constant="-16" id="2Te-Nr-vYV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kc3-zN-7hT" secondAttribute="trailing" constant="-16" id="6u8-h0-0b0"/>
+                            <constraint firstItem="83r-Ir-nfL" firstAttribute="top" secondItem="RkN-vH-gro" secondAttribute="bottom" constant="30" id="96Q-O4-peM"/>
+                            <constraint firstItem="VKy-Sh-8rk" firstAttribute="leading" secondItem="gGr-Vy-yWf" secondAttribute="leadingMargin" id="BRg-X8-iIP"/>
                             <constraint firstItem="kc3-zN-7hT" firstAttribute="leading" secondItem="gGr-Vy-yWf" secondAttribute="leadingMargin" constant="-16" id="BfK-Xx-qd1"/>
+                            <constraint firstItem="VKy-Sh-8rk" firstAttribute="top" secondItem="83r-Ir-nfL" secondAttribute="bottom" constant="8" id="VN9-IA-ZRf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="83r-Ir-nfL" secondAttribute="trailing" constant="6" id="c8b-L0-MM3"/>
                             <constraint firstItem="4z9-8e-NFB" firstAttribute="top" secondItem="kc3-zN-7hT" secondAttribute="bottom" id="gVh-lE-7b6"/>
+                            <constraint firstItem="BIL-GC-LEg" firstAttribute="leading" secondItem="gGr-Vy-yWf" secondAttribute="leadingMargin" id="klL-kO-3n6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BIL-GC-LEg" secondAttribute="trailing" constant="-11" id="sLw-gM-ggK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KmJ-fW-G9W" secondAttribute="trailing" constant="-16" id="sTs-fr-HZa"/>
+                            <constraint firstItem="83r-Ir-nfL" firstAttribute="leading" secondItem="gGr-Vy-yWf" secondAttribute="leadingMargin" constant="6" id="tm2-2P-4J6"/>
+                            <constraint firstItem="KmJ-fW-G9W" firstAttribute="top" secondItem="RkN-vH-gro" secondAttribute="bottom" constant="128" id="yVR-wm-KCs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="availableDaysLabel" destination="BIL-GC-LEg" id="zk6-Pq-8IK"/>
+                        <outlet property="datePicker" destination="KmJ-fW-G9W" id="qpF-Dh-VGV"/>
+                        <outlet property="next" destination="kc3-zN-7hT" id="KeF-7e-W8q"/>
+                        <outlet property="pickHourTextField" destination="83r-Ir-nfL" id="NjS-Nv-P89"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTJ-vb-8DL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

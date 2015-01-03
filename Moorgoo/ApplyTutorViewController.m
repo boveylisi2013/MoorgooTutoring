@@ -27,109 +27,125 @@
     
     self.addedClasses = [[NSMutableArray alloc] init];
     self.availableDays = [[NSMutableArray alloc] init];
-    
+
     PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+    [query setLimit:1000];
     [query whereKey:@"user_id" equalTo:self.currentUserId];
-    PFObject *tutor = [query getFirstObject];
-    if(tutor == nil)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Tutor information missing, please contact Moorgoo staff"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
-    NSArray *tempAddedClasses = (NSArray *)[tutor objectForKey:@"classes"];
-    [self.addedClasses addObjectsFromArray:tempAddedClasses];
-    
-    NSArray *tempAvailableDays = (NSArray *)[tutor objectForKey:@"availableDays"];
-    [self.availableDays addObjectsFromArray:tempAvailableDays];
-    
-    
-    scroller.delegate = self;
-    
-    // Add the method to detect change in the specficClassTextField
-    [self.specificClassTextField addTarget:self
-                                         action:@selector(textFieldDidChange:)
-                               forControlEvents:UIControlEventEditingChanged];
-    
-    //Initially hide the table view
-    [self.classesTableView setHidden:YES];
-    
-    //Query for all the classes from the database and put them into classItems
-    classItems = [[NSMutableArray alloc] init];
-    [self getClasses:classItems];
-    
-    //Get another array of classes which will not change when user search for classes
-    stableClassItems = [[NSMutableArray alloc] init];
-    [self getClasses:stableClassItems];
-    
-    self.classesTableView.delegate = self;
-    self.classesTableView.dataSource = self;
-    
-    
-    // Hide the classes and delete buttons unless classes are added
-    [self.chosenClass_1 setHidden:YES];
-    [self.chosenClass_2 setHidden:YES];
-    [self.chosenClass_3 setHidden:YES];
-    [self.chosenClass_4 setHidden:YES];
-    [self.deleteButton_1 setHidden:YES];
-    [self.deleteButton_2 setHidden:YES];
-    [self.deleteButton_3 setHidden:YES];
-    [self.deleteButton_4 setHidden:YES];
-    
-    if([self.addedClasses count] != 0)
-    {
-        hiddens = [[NSMutableArray alloc] init];
-        hiddensA = [[NSMutableArray alloc] init];
-        
-        [hiddens addObject:self.chosenClass_1];
-        [hiddensA addObject:self.deleteButton_1];
-
-        [hiddens addObject:self.chosenClass_2];
-        [hiddensA addObject:self.deleteButton_2];
-
-        [hiddens addObject:self.chosenClass_3];
-        [hiddensA addObject:self.deleteButton_3];
-
-        [hiddens addObject:self.chosenClass_4];
-        [hiddensA addObject:self.deleteButton_4];
-
-        int i = 0;
-        for(NSString *classString in self.addedClasses)
-        {
-            [hiddens[i] setHidden:NO];
-            [hiddensA[i] setHidden:NO];
-            UILabel *chosenClass =  hiddens[i];
-            chosenClass.text = classString;
-            i++;
-        }
-    }
-    
-    // Set the switches for the days to be off
-    [self.mondaySwitch setOn:NO];
-    [self.tuesdaySwitch setOn:NO];
-    [self.wednesdaySwitch setOn:NO];
-    [self.thursdaySwitch setOn:NO];
-    [self.fridaySwitch setOn:NO];
-    [self.saturdaySwitch setOn:NO];
-    [self.sundaySwitch setOn:NO];
-    
-    if([self.availableDays count] != 0)
-    {
-        if([self.availableDays containsObject:@"Monday"]) [self.mondaySwitch setOn:YES];
-        if([self.availableDays containsObject:@"Tuesday"]) [self.tuesdaySwitch setOn:YES];
-        if([self.availableDays containsObject:@"Wednesday"]) [self.wednesdaySwitch setOn:YES];
-        if([self.availableDays containsObject:@"Thursday"]) [self.thursdaySwitch setOn:YES];
-        if([self.availableDays containsObject:@"Friday"]) [self.fridaySwitch setOn:YES];
-        if([self.availableDays containsObject:@"Saturday"]) [self.saturdaySwitch setOn:YES];
-        if([self.availableDays containsObject:@"Sunday"]) [self.sundaySwitch setOn:YES];
-    }
-
-
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *tutor, NSError *error)
+     {
+         if(!error)
+         {
+             if(tutor == nil)
+             {
+                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                                 message:@"Tutor information missing, please contact Moorgoo staff"
+                                                                delegate:nil
+                                                       cancelButtonTitle:@"OK"
+                                                       otherButtonTitles:nil];
+                 [alert show];
+                 return;
+             }
+             
+             NSArray *tempAddedClasses = (NSArray *)[tutor objectForKey:@"classes"];
+             [self.addedClasses addObjectsFromArray:tempAddedClasses];
+             
+             NSArray *tempAvailableDays = (NSArray *)[tutor objectForKey:@"availableDays"];
+             [self.availableDays addObjectsFromArray:tempAvailableDays];
+             
+             
+             scroller.delegate = self;
+             
+             // Add the method to detect change in the specficClassTextField
+             [self.specificClassTextField addTarget:self
+                                             action:@selector(textFieldDidChange:)
+                                   forControlEvents:UIControlEventEditingChanged];
+             
+             //Initially hide the table view
+             self.classesTableView.rowHeight = 44;
+             [self.classesTableView setHidden:YES];
+             
+             //Query for all the classes from the database and put them into classItems
+             classItems = [[NSMutableArray alloc] init];
+             [self getClasses:classItems];
+             
+             //Get another array of classes which will not change when user search for classes
+             stableClassItems = [[NSMutableArray alloc] init];
+             [self getClasses:stableClassItems];
+             
+             self.classesTableView.delegate = self;
+             self.classesTableView.dataSource = self;
+             
+             
+             // Hide the classes and delete buttons unless classes are added
+             [self.chosenClass_1 setHidden:YES];
+             [self.chosenClass_2 setHidden:YES];
+             [self.chosenClass_3 setHidden:YES];
+             [self.chosenClass_4 setHidden:YES];
+             [self.deleteButton_1 setHidden:YES];
+             [self.deleteButton_2 setHidden:YES];
+             [self.deleteButton_3 setHidden:YES];
+             [self.deleteButton_4 setHidden:YES];
+             
+             if([self.addedClasses count] != 0)
+             {
+                 hiddens = [[NSMutableArray alloc] init];
+                 hiddensA = [[NSMutableArray alloc] init];
+                 
+                 [hiddens addObject:self.chosenClass_1];
+                 [hiddensA addObject:self.deleteButton_1];
+                 
+                 [hiddens addObject:self.chosenClass_2];
+                 [hiddensA addObject:self.deleteButton_2];
+                 
+                 [hiddens addObject:self.chosenClass_3];
+                 [hiddensA addObject:self.deleteButton_3];
+                 
+                 [hiddens addObject:self.chosenClass_4];
+                 [hiddensA addObject:self.deleteButton_4];
+                 
+                 int i = 0;
+                 for(NSString *classString in self.addedClasses)
+                 {
+                     [hiddens[i] setHidden:NO];
+                     [hiddensA[i] setHidden:NO];
+                     UILabel *chosenClass =  hiddens[i];
+                     chosenClass.text = classString;
+                     i++;
+                 }
+             }
+             
+             // Set the switches for the days to be off
+             [self.mondaySwitch setOn:NO];
+             [self.tuesdaySwitch setOn:NO];
+             [self.wednesdaySwitch setOn:NO];
+             [self.thursdaySwitch setOn:NO];
+             [self.fridaySwitch setOn:NO];
+             [self.saturdaySwitch setOn:NO];
+             [self.sundaySwitch setOn:NO];
+             
+             if([self.availableDays count] != 0)
+             {
+                 if([self.availableDays containsObject:@"Monday"]) [self.mondaySwitch setOn:YES];
+                 if([self.availableDays containsObject:@"Tuesday"]) [self.tuesdaySwitch setOn:YES];
+                 if([self.availableDays containsObject:@"Wednesday"]) [self.wednesdaySwitch setOn:YES];
+                 if([self.availableDays containsObject:@"Thursday"]) [self.thursdaySwitch setOn:YES];
+                 if([self.availableDays containsObject:@"Friday"]) [self.fridaySwitch setOn:YES];
+                 if([self.availableDays containsObject:@"Saturday"]) [self.saturdaySwitch setOn:YES];
+                 if([self.availableDays containsObject:@"Sunday"]) [self.sundaySwitch setOn:YES];
+             }
+         }
+         else
+         {
+             // Not found the tutor information in the database
+             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                             message:@"Tutor information missing, please contact with Moorgoo staff"
+                                                            delegate:nil
+                                                   cancelButtonTitle:@"OK"
+                                                   otherButtonTitles:nil];
+             [alert show];
+             return;
+         }
+     }];
 }
 
 // Disable the horizontal scroll
@@ -143,6 +159,7 @@
 -(void)getClasses:(NSMutableArray *)array
 {
     PFQuery *query = [PFQuery queryWithClassName:@"classes"];
+    [query setLimit:1000];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [array addObjectsFromArray:[objects valueForKey:@"classname"]];
@@ -327,6 +344,7 @@
     
     //verify the existance
     PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+    [query setLimit:1000];
     [query whereKey:@"user_id" equalTo:self.currentUserId];
     [query getFirstObjectInBackgroundWithBlock:^(PFObject *tutor, NSError *error)
     {

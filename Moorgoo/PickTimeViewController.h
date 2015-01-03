@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickTimeViewController : UIViewController
-
+@interface PickTimeViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 @property(nonatomic) NSString *school;
 @property(nonatomic) NSString *course;
+@property(nonatomic) NSString *help;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UILabel *availableDaysLabel;
+
+
+@property (nonatomic, weak) IBOutlet UITextField *pickHourTextField;
+@property (nonatomic, weak) IBOutlet UIButton *next;
 
 @end

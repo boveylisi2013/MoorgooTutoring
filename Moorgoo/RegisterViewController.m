@@ -199,6 +199,7 @@
 -(void)getSchools {
     
     PFQuery *query = [PFQuery queryWithClassName:@"school"];
+    [query setLimit:1000];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [pickerSchoolArray addObjectsFromArray:[objects valueForKey:@"school"]];
@@ -248,6 +249,7 @@
 -(void)getDepartments {
     
     PFQuery *query = [PFQuery queryWithClassName:@"department"];
+    [query setLimit:1000];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [pickerDepartmentArray addObjectsFromArray:[objects valueForKey:@"department"]];
