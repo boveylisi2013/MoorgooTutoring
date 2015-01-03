@@ -49,14 +49,10 @@
                 PFObject *tutor = [PFObject objectWithClassName:@"tutor"];
                 
                 NSMutableArray *classes = [[NSMutableArray alloc] init];
-                [classes addObject:@"CSE 11"];
-                [classes addObject:@"CSE 30"];
-                [classes addObject:@"CSE 100"];
+
                 
                 NSMutableArray *availableDay = [[NSMutableArray alloc] init];
-                [availableDay addObject:@"Monday"];
-                [availableDay addObject:@"Tuesday"];
-                [availableDay addObject:@"Friday"];
+
                 
                 [tutor setObject:currentUser.objectId forKey:@"user_id"];
                 [tutor setObject:classes forKey:@"classes"];

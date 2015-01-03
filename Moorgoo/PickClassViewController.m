@@ -14,6 +14,9 @@
     // Arrays for tableView
     NSMutableArray *classItems;
     NSMutableArray *stableClassItems;
+    
+    UIPickerView *helpPicker;
+    NSMutableArray *pickerHelpArray;
 }
 @end
 
@@ -21,7 +24,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    self.next.enabled = NO;
+
     self.tableView.rowHeight = 44;
     
     // Add the method to detect change in the specficClassTextField
@@ -42,7 +47,8 @@
     
     //Initially hide the table view
     [self.tableView setHidden:YES];
-
+    
+    [self addSchoolPicker];
 }
 
 // Method to query data from parse
@@ -95,9 +101,15 @@
 -(void)textFieldDidChange:(UITextField *)textField
 {
     //NSLog(@"THE TEXTFIELD IS CHANGED!!");
-    if (textField.text.length == 0) [self.tableView setHidden:YES];
+    if (textField.text.length == 0)
+    {
+        [self.tableView setHidden:YES];
+        self.next.enabled  = NO;
+    }
     else
     {
+        self.next.enabled  = YES;
+
         [self.tableView setHidden:NO];
         NSString *inputString = [textField.text uppercaseString];
         NSMutableArray *discardItems = [[NSMutableArray alloc] init];
@@ -119,6 +131,7 @@
         }
         [self.tableView reloadData];
     }
+    
 }
 
 // Helper method which checks whether one string contains another string
@@ -126,6 +139,27 @@
 {
     return !([string_1 rangeOfString:string_2].location == NSNotFound);
 }
+
+#pragma mark - buttonPressed methods
+- (IBAction)nextButtonPressed:(UIButton *)sender
+{
+    if(![classItems containsObject:[self.specificClassTextField.text uppercaseString]])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please input & choose the correct class"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+
+        return;
+    }
+    else
+    {
+        [self performSegueWithIdentifier:@"classToTime" sender:self];
+    }
+}
+
 
 #pragma mark - Navigation
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -174,6 +208,97 @@
     [self.tableView setHidden:YES];
     [self.view endEditing:YES];
     //ChecklistItem *item = _items[indexPath.row];
+}
+
+
+
+#pragma mark - Picker View Data source
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component {
+    if(pickerView == helpPicker)
+        return pickerHelpArray.count;
+    else
+        return pickerHelpArray.count;
+}
+
+#pragma mark- Picker View Delegate
+-(NSString *)pickerView:(UIPickerView *)pickerView
+            titleForRow:(NSInteger)row
+           forComponent:(NSInteger)component
+{
+    if(pickerView == helpPicker)
+        return [pickerHelpArray objectAtIndex:row];
+    else
+        return [pickerHelpArray objectAtIndex:row];
+}
+
+- (void)pickerView:(UIPickerView *)pickerView
+      didSelectRow:(NSInteger)row
+       inComponent:(NSInteger)component
+{
+    NSLog(@"Selected Row %ld", (long)row);
+    if(pickerView == helpPicker)
+        self.pickHelpTextField.text = [NSString stringWithFormat:@"%@", [pickerHelpArray objectAtIndex:row]];
+    else
+        self.pickHelpTextField.text = [NSString stringWithFormat:@"%@", [pickerHelpArray objectAtIndex:row]];
+}
+
+
+//UIpicker view replace keyborad for pick help
+-(void)addSchoolPicker{
+    pickerHelpArray = [[NSMutableArray alloc]init];
+    [self getHelp];
+    
+    helpPicker = [[UIPickerView alloc] initWithFrame:CGRectZero];
+    helpPicker.delegate = self;
+    helpPicker.dataSource = self;
+    [helpPicker setShowsSelectionIndicator:YES];
+    self.pickHelpTextField.inputView = helpPicker;
+    
+    // Create done button in UIPickerView
+    UIToolbar*  mypickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+    mypickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [mypickerToolbar sizeToFit];
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *flexSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    [barItems addObject:flexSpace];
+    
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDoneClicked)];
+    [barItems addObject:doneBtn];
+    
+    [mypickerToolbar setItems:barItems animated:YES];
+    self.pickHelpTextField.inputAccessoryView = mypickerToolbar;
+}
+
+-(void)pickerDoneClicked
+{
+    //NSLog(@"Done Clicked");
+    [self.pickHelpTextField resignFirstResponder];
+    if(![self.pickHelpTextField.text isEqual: @""]) {
+        self.next.enabled = YES;
+    }
+    else {
+        self.next.enabled = NO;
+    }
+}
+
+-(void)getHelp {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"school"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            [pickerHelpArray addObjectsFromArray:[objects valueForKey:@"school"]];
+            [pickerHelpArray insertObject:@"" atIndex:0];
+            [pickerHelpArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+            //NSLog(@"Successfully retrieved: %@", pickerDepartmentArray);
+        } else {
+            NSString *errorString = [[error userInfo] objectForKey:@"error"];
+            NSLog(@"Error: %@", errorString);
+        }
+    }];
 }
 
 @end

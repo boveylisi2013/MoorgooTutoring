@@ -41,7 +41,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch *saturdaySwitch;
 @property (weak, nonatomic) IBOutlet UISwitch *sundaySwitch;
 
+@property (strong,nonatomic) NSMutableArray *addedClasses;
+@property (strong,nonatomic) NSMutableArray *availableDays;
 
+@property (strong,nonatomic) NSString *currentUserId;
 
 
 

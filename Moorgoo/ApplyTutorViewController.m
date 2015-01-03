@@ -14,9 +14,8 @@
     NSMutableArray *classItems;
     NSMutableArray *stableClassItems;
     
-    // Array to store the classes that
-    // the tutor added
-    NSMutableArray *addedClasses;
+    NSMutableArray *hiddens;
+    NSMutableArray *hiddensA;
 }
 @end
 
@@ -25,6 +24,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.addedClasses = [[NSMutableArray alloc] init];
+    self.availableDays = [[NSMutableArray alloc] init];
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+    [query whereKey:@"user_id" equalTo:self.currentUserId];
+    PFObject *tutor = [query getFirstObject];
+    if(tutor == nil)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Tutor information missing, please contact Moorgoo staff"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    NSArray *tempAddedClasses = (NSArray *)[tutor objectForKey:@"classes"];
+    [self.addedClasses addObjectsFromArray:tempAddedClasses];
+    
+    NSArray *tempAvailableDays = (NSArray *)[tutor objectForKey:@"availableDays"];
+    [self.availableDays addObjectsFromArray:tempAvailableDays];
+    
     
     scroller.delegate = self;
     
@@ -47,7 +70,7 @@
     self.classesTableView.delegate = self;
     self.classesTableView.dataSource = self;
     
-    addedClasses = [[NSMutableArray alloc]init];
+    
     // Hide the classes and delete buttons unless classes are added
     [self.chosenClass_1 setHidden:YES];
     [self.chosenClass_2 setHidden:YES];
@@ -57,6 +80,55 @@
     [self.deleteButton_2 setHidden:YES];
     [self.deleteButton_3 setHidden:YES];
     [self.deleteButton_4 setHidden:YES];
+    
+    if([self.addedClasses count] != 0)
+    {
+        hiddens = [[NSMutableArray alloc] init];
+        hiddensA = [[NSMutableArray alloc] init];
+        
+        [hiddens addObject:self.chosenClass_1];
+        [hiddensA addObject:self.deleteButton_1];
+
+        [hiddens addObject:self.chosenClass_2];
+        [hiddensA addObject:self.deleteButton_2];
+
+        [hiddens addObject:self.chosenClass_3];
+        [hiddensA addObject:self.deleteButton_3];
+
+        [hiddens addObject:self.chosenClass_4];
+        [hiddensA addObject:self.deleteButton_4];
+
+        int i = 0;
+        for(NSString *classString in self.addedClasses)
+        {
+            [hiddens[i] setHidden:NO];
+            [hiddensA[i] setHidden:NO];
+            UILabel *chosenClass =  hiddens[i];
+            chosenClass.text = classString;
+            i++;
+        }
+    }
+    
+    // Set the switches for the days to be off
+    [self.mondaySwitch setOn:NO];
+    [self.tuesdaySwitch setOn:NO];
+    [self.wednesdaySwitch setOn:NO];
+    [self.thursdaySwitch setOn:NO];
+    [self.fridaySwitch setOn:NO];
+    [self.saturdaySwitch setOn:NO];
+    [self.sundaySwitch setOn:NO];
+    
+    if([self.availableDays count] != 0)
+    {
+        if([self.availableDays containsObject:@"Monday"]) [self.mondaySwitch setOn:YES];
+        if([self.availableDays containsObject:@"Tuesday"]) [self.tuesdaySwitch setOn:YES];
+        if([self.availableDays containsObject:@"Wednesday"]) [self.wednesdaySwitch setOn:YES];
+        if([self.availableDays containsObject:@"Thursday"]) [self.thursdaySwitch setOn:YES];
+        if([self.availableDays containsObject:@"Friday"]) [self.fridaySwitch setOn:YES];
+        if([self.availableDays containsObject:@"Saturday"]) [self.saturdaySwitch setOn:YES];
+        if([self.availableDays containsObject:@"Sunday"]) [self.sundaySwitch setOn:YES];
+    }
+
 
 }
 
@@ -139,7 +211,7 @@
     }
     
     // Second, check whether the tutor reach the limit of choosing 4 classes
-    if ([addedClasses count] == 4)
+    if ([self.addedClasses count] == 4)
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"You can add at most 4 classes"
@@ -151,7 +223,7 @@
     }
     
     // Third, should not let user add the same class more than once
-    if([addedClasses containsObject:inputString])
+    if([self.addedClasses containsObject:inputString])
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                                         message:@"You have already added this class"
@@ -162,7 +234,7 @@
         return;
     }
     
-    [addedClasses addObject:inputString];
+    [self.addedClasses addObject:inputString];
     if (self.chosenClass_1.hidden == YES)
     {
         [self.chosenClass_1 setHidden:NO];
@@ -191,28 +263,28 @@
 
 - (IBAction)deleteButton1Pressed:(UIButton *)sender
 {
-    [addedClasses removeObject:self.chosenClass_1.text];
+    [self.addedClasses removeObject:self.chosenClass_1.text];
     [self.chosenClass_1 setHidden:YES];
     [self.deleteButton_1 setHidden:YES];
 }
 
 - (IBAction)deleteButton2Pressed:(UIButton *)sender
 {
-    [addedClasses removeObject:self.chosenClass_2.text];
+    [self.addedClasses removeObject:self.chosenClass_2.text];
     [self.chosenClass_2 setHidden:YES];
     [self.deleteButton_2 setHidden:YES];
 }
 
 - (IBAction)deleteButton3Pressed:(UIButton *)sender
 {
-    [addedClasses removeObject:self.chosenClass_3.text];
+    [self.addedClasses removeObject:self.chosenClass_3.text];
     [self.chosenClass_3 setHidden:YES];
     [self.deleteButton_3 setHidden:YES];
 }
 
 - (IBAction)deleteButton4Pressed:(UIButton *)sender
 {
-    [addedClasses removeObject:self.chosenClass_4.text];
+    [self.addedClasses removeObject:self.chosenClass_4.text];
     [self.chosenClass_4 setHidden:YES];
     [self.deleteButton_4 setHidden:YES];
 }
@@ -220,7 +292,62 @@
 
 - (IBAction)submitButtonPressed:(UIButton *)sender
 {
+    [self.availableDays removeAllObjects];
     
+    if(self.mondaySwitch.isOn)    [self.availableDays addObject:@"Monday"];
+    if(self.tuesdaySwitch.isOn)   [self.availableDays addObject:@"Tuesday"];
+    if(self.wednesdaySwitch.isOn) [self.availableDays addObject:@"Wednesday"];
+    if(self.thursdaySwitch.isOn)  [self.availableDays addObject:@"Thursday"];
+    if(self.fridaySwitch.isOn)    [self.availableDays addObject:@"Friday"];
+    if(self.saturdaySwitch.isOn)  [self.availableDays addObject:@"Saturday"];
+    if(self.sundaySwitch.isOn)    [self.availableDays addObject:@"Sunday"];
+    
+    
+    if([self.addedClasses count] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please choose the class you want to teach"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    if([self.availableDays count] == 0)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please choose the days you are available"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
+    //verify the existance
+    PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
+    [query whereKey:@"user_id" equalTo:self.currentUserId];
+    [query getFirstObjectInBackgroundWithBlock:^(PFObject *tutor, NSError *error)
+    {
+        if(!error)
+        {
+            [tutor setObject:self.addedClasses forKey:@"classes"];
+            [tutor setObject:self.availableDays forKey:@"availableDays"];
+            [tutor saveInBackground];
+        }
+        else
+        {
+            // Not found the tutor information in the database
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Tutor information missing, please contact with Moorgoo staff"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            return;
+        }
+    }];
 }
 
 

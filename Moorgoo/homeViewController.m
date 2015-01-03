@@ -81,14 +81,15 @@
 //    }];
 //}
 //
-//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-//{
-//    if ([segue.identifier isEqualToString:@"BeATutor"])
-//    {
-//        ApplyTutorViewController *controller = (ApplyTutorViewController *)segue.destinationViewController;
-//        controller.delegate = self;
-//        //controller.classItems = classes;
-//    }
-//}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"BeATutor"])
+    {
+        ApplyTutorViewController *controller = (ApplyTutorViewController *)segue.destinationViewController;
+        PFUser *currentUser = [PFUser currentUser];
+        NSString *userID = currentUser.objectId;
+        controller.currentUserId = userID;
+    }
+}
 
 @end

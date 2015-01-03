@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PickClassViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface PickClassViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property(nonatomic) NSString *school;
 @property (weak, nonatomic) IBOutlet UITextField *specificClassTextField;
+@property (nonatomic, weak) IBOutlet UITextField *pickHelpTextField;
 @property (nonatomic, weak) IBOutlet UIButton *next;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 

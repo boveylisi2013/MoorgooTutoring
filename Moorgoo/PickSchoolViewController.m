@@ -22,7 +22,7 @@
     [super viewDidLoad];
     
     self.next.enabled = NO;
-    [self addDepartmentPicker];
+    [self addSchoolPicker];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,7 +65,7 @@
 }
 
 //UIpicker view replace keyborad for pick school
--(void)addDepartmentPicker{
+-(void)addSchoolPicker{
     pickerSchoolArray = [[NSMutableArray alloc]init];
     [self getSchools];
     
