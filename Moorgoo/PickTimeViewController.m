@@ -7,6 +7,7 @@
 //
 
 #import "PickTimeViewController.h"
+#import "PaymentViewController.h"
 
 @interface PickTimeViewController ()
 {
@@ -37,7 +38,7 @@
     [self.datePicker setDate:showDate];
     
     // Initialize the weekdays array
-    weekdays = @[@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thurday", @"Friday", @"Saturday"];
+    weekdays = @[@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday"];
     
 }
 
@@ -142,10 +143,7 @@
     }
     else
     {
-        
-        
-        
-        
+        [self performSegueWithIdentifier:@"timeToPayment" sender:self];
     }
 }
 
@@ -228,14 +226,24 @@
 }
 
 
-/*
 #pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"timeToPayment"])
+    {
+        PaymentViewController *controller = (PaymentViewController *)segue.destinationViewController;
+        controller.school = self.school;
+        controller.course = self.course;
+        controller.help = self.help;
+        
+        controller.hour = self.pickHourTextField.text;
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MM-dd-yyyy HH:mm"];
+        NSString *dateString = [dateFormatter stringFromDate:self.datePicker.date];
+        controller.date = dateString;
+    }
+    
 }
-*/
+
 
 @end

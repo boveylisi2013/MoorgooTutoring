@@ -16,6 +16,7 @@
     
     NSMutableArray *hiddens;
     NSMutableArray *hiddensA;
+
 }
 @end
 
@@ -320,27 +321,27 @@
     if(self.sundaySwitch.isOn)    [self.availableDays addObject:@"Sunday"];
     
     
-    if([self.addedClasses count] == 0)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Please choose the class you want to teach"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
-    
-    if([self.availableDays count] == 0)
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Please choose the days you are available"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        return;
-    }
+//    if([self.addedClasses count] == 0)
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+//                                                        message:@"Please choose the class you want to teach"
+//                                                       delegate:nil
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
+//    
+//    if([self.availableDays count] == 0)
+//    {
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+//                                                        message:@"Please choose the days you are available"
+//                                                       delegate:nil
+//                                              cancelButtonTitle:@"OK"
+//                                              otherButtonTitles:nil];
+//        [alert show];
+//        return;
+//    }
     
     //verify the existance
     PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
@@ -366,6 +367,15 @@
             return;
         }
     }];
+    
+        // successfully updated tutor information
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice"
+                                                        message:@"You have successfully updated your tutor information"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        return;
 }
 
 

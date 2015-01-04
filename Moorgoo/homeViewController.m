@@ -48,6 +48,8 @@
     [PFUser logOut];
     [self performSegueWithIdentifier:@"LogoutSuccessful" sender:self];
 }
+
+
 - (IBAction)BeTutorButtonPressed:(UIButton *)sender {
     PFUser *currentUser = [PFUser currentUser];
     if ([[currentUser valueForKey:@"isTutor"]  isEqual: @(TRUE)])

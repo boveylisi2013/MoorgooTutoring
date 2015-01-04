@@ -57,7 +57,7 @@
                 
                 [tutor setObject:currentUser.objectId forKey:@"user_id"];
                 [tutor setObject:classes forKey:@"classes"];
-                [tutor setObject:availableDay forKey:@"availableDay"];
+                [tutor setObject:availableDay forKey:@"availableDays"];
                 [tutor saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded){
                         NSLog(@"Object Uploaded!");
