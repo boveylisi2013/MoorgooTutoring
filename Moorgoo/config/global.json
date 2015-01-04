@@ -1,0 +1,11 @@
+{
+    "applications": {
+        "_default": {
+            "link": "moorgoo"
+        }, 
+        "moorgoo": {
+            "applicationId": "kLSR2JZ5ol1y6SbFP2d6KoZ904Ui4csKC8aGMObN", 
+            "masterKey": "cgO9awWyPxH3YyPz7tlWoRJXmNgyYaOEpBcE92lQ"
+        }
+    }
+}

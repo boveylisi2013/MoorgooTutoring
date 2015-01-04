@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
+#import "STPCheckoutView.h"
 
 
-@interface PaymentViewController : UIViewController <UITextFieldDelegate>
+@interface PaymentViewController : UIViewController <UITextFieldDelegate, STPCheckoutDelegate>
 
 @property(nonatomic) NSString *school;
 @property(nonatomic) NSString *course;
@@ -25,10 +26,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 
-@property (weak, nonatomic) IBOutlet UITextField *cardNumberTextField;
-@property (weak, nonatomic) IBOutlet UITextField *expireTextField;
-@property (weak, nonatomic) IBOutlet UITextField *cvcTextField;
-
-@property (strong, nonatomic) MBProgressHUD *hud;
+//@property (nonatomic) PFObject *product;
+@property (nonatomic, copy) NSString *size;
+//@property (nonatomic, strong) NSDictionary *shippingInfo;
+@property (nonatomic, strong) STPCheckoutView *checkoutView;
+@property (nonatomic, strong) MBProgressHUD *hud;
 
 @end

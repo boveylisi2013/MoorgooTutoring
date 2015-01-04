@@ -56,6 +56,31 @@
 		4299EB161A58CAFA00DB15D1 /* PTKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EB0B1A58CAFA00DB15D1 /* PTKTextField.m */; };
 		4299EB171A58CAFA00DB15D1 /* PTKUSAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EB0D1A58CAFA00DB15D1 /* PTKUSAddressZip.m */; };
 		4299EB181A58CAFA00DB15D1 /* PTKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EB0F1A58CAFA00DB15D1 /* PTKView.m */; };
+		4299EB1B1A58EB9100DB15D1 /* creditCardBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB191A58EB9100DB15D1 /* creditCardBg.png */; };
+		4299EB1C1A58EB9100DB15D1 /* creditCardBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB1A1A58EB9100DB15D1 /* creditCardBg@2x.png */; };
+		4299EB341A58ECE800DB15D1 /* amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB1F1A58ECE800DB15D1 /* amex.png */; };
+		4299EB351A58ECE800DB15D1 /* amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB201A58ECE800DB15D1 /* amex@2x.png */; };
+		4299EB361A58ECE800DB15D1 /* cvc-amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB211A58ECE800DB15D1 /* cvc-amex.png */; };
+		4299EB371A58ECE800DB15D1 /* cvc-amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB221A58ECE800DB15D1 /* cvc-amex@2x.png */; };
+		4299EB381A58ECE800DB15D1 /* cvc.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB231A58ECE800DB15D1 /* cvc.png */; };
+		4299EB391A58ECE800DB15D1 /* cvc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB241A58ECE800DB15D1 /* cvc@2x.png */; };
+		4299EB3A1A58ECE800DB15D1 /* diners.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB251A58ECE800DB15D1 /* diners.png */; };
+		4299EB3B1A58ECE800DB15D1 /* diners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB261A58ECE800DB15D1 /* diners@2x.png */; };
+		4299EB3C1A58ECE800DB15D1 /* discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB271A58ECE800DB15D1 /* discover.png */; };
+		4299EB3D1A58ECE800DB15D1 /* discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB281A58ECE800DB15D1 /* discover@2x.png */; };
+		4299EB3E1A58ECE800DB15D1 /* jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB291A58ECE800DB15D1 /* jcb.png */; };
+		4299EB3F1A58ECE800DB15D1 /* jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB2A1A58ECE800DB15D1 /* jcb@2x.png */; };
+		4299EB401A58ECE800DB15D1 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB2B1A58ECE800DB15D1 /* mastercard.png */; };
+		4299EB411A58ECE800DB15D1 /* mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB2C1A58ECE800DB15D1 /* mastercard@2x.png */; };
+		4299EB421A58ECE800DB15D1 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB2D1A58ECE800DB15D1 /* placeholder.png */; };
+		4299EB431A58ECE800DB15D1 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB2E1A58ECE800DB15D1 /* placeholder@2x.png */; };
+		4299EB441A58ECE800DB15D1 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB2F1A58ECE800DB15D1 /* visa.png */; };
+		4299EB451A58ECE800DB15D1 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB301A58ECE800DB15D1 /* visa@2x.png */; };
+		4299EB461A58ECE800DB15D1 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB311A58ECE800DB15D1 /* gradient@2x.png */; };
+		4299EB471A58ECE800DB15D1 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB321A58ECE800DB15D1 /* textfield.png */; };
+		4299EB481A58ECE800DB15D1 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB331A58ECE800DB15D1 /* textfield@2x.png */; };
+		4299EB4B1A58F04D00DB15D1 /* FinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EB4A1A58F04D00DB15D1 /* FinishViewController.m */; };
+		4299EB4D1A58F36000DB15D1 /* iconConfirmation.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +179,32 @@
 		4299EB0D1A58CAFA00DB15D1 /* PTKUSAddressZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKUSAddressZip.m; sourceTree = "<group>"; };
 		4299EB0E1A58CAFA00DB15D1 /* PTKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PTKView.h; sourceTree = "<group>"; };
 		4299EB0F1A58CAFA00DB15D1 /* PTKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PTKView.m; sourceTree = "<group>"; };
+		4299EB191A58EB9100DB15D1 /* creditCardBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = creditCardBg.png; sourceTree = "<group>"; };
+		4299EB1A1A58EB9100DB15D1 /* creditCardBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "creditCardBg@2x.png"; sourceTree = "<group>"; };
+		4299EB1F1A58ECE800DB15D1 /* amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex.png; sourceTree = "<group>"; };
+		4299EB201A58ECE800DB15D1 /* amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amex@2x.png"; sourceTree = "<group>"; };
+		4299EB211A58ECE800DB15D1 /* cvc-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc-amex.png"; sourceTree = "<group>"; };
+		4299EB221A58ECE800DB15D1 /* cvc-amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc-amex@2x.png"; sourceTree = "<group>"; };
+		4299EB231A58ECE800DB15D1 /* cvc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cvc.png; sourceTree = "<group>"; };
+		4299EB241A58ECE800DB15D1 /* cvc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc@2x.png"; sourceTree = "<group>"; };
+		4299EB251A58ECE800DB15D1 /* diners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diners.png; sourceTree = "<group>"; };
+		4299EB261A58ECE800DB15D1 /* diners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "diners@2x.png"; sourceTree = "<group>"; };
+		4299EB271A58ECE800DB15D1 /* discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discover.png; sourceTree = "<group>"; };
+		4299EB281A58ECE800DB15D1 /* discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discover@2x.png"; sourceTree = "<group>"; };
+		4299EB291A58ECE800DB15D1 /* jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jcb.png; sourceTree = "<group>"; };
+		4299EB2A1A58ECE800DB15D1 /* jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jcb@2x.png"; sourceTree = "<group>"; };
+		4299EB2B1A58ECE800DB15D1 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		4299EB2C1A58ECE800DB15D1 /* mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mastercard@2x.png"; sourceTree = "<group>"; };
+		4299EB2D1A58ECE800DB15D1 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		4299EB2E1A58ECE800DB15D1 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		4299EB2F1A58ECE800DB15D1 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
+		4299EB301A58ECE800DB15D1 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
+		4299EB311A58ECE800DB15D1 /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
+		4299EB321A58ECE800DB15D1 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
+		4299EB331A58ECE800DB15D1 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
+		4299EB491A58F04D00DB15D1 /* FinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishViewController.h; sourceTree = "<group>"; };
+		4299EB4A1A58F04D00DB15D1 /* FinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishViewController.m; sourceTree = "<group>"; };
+		4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconConfirmation.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +362,9 @@
 			isa = PBXGroup;
 			children = (
 				4299EA7E1A5899D700DB15D1 /* lajolla.gif */,
+				4299EB191A58EB9100DB15D1 /* creditCardBg.png */,
+				4299EB1A1A58EB9100DB15D1 /* creditCardBg@2x.png */,
+				4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -326,6 +380,8 @@
 				4299EA701A56295E00DB15D1 /* PickTimeViewController.m */,
 				4299EA801A58AA6100DB15D1 /* PaymentViewController.h */,
 				4299EA811A58AA6100DB15D1 /* PaymentViewController.m */,
+				4299EB491A58F04D00DB15D1 /* FinishViewController.h */,
+				4299EB4A1A58F04D00DB15D1 /* FinishViewController.m */,
 			);
 			name = NeedTutor;
 			sourceTree = "<group>";
@@ -392,6 +448,7 @@
 		4299EAFC1A58CAE600DB15D1 /* PaymentKit */ = {
 			isa = PBXGroup;
 			children = (
+				4299EB1D1A58ECDA00DB15D1 /* Resources */,
 				4299EAFD1A58CAFA00DB15D1 /* PTKAddressZip.h */,
 				4299EAFE1A58CAFA00DB15D1 /* PTKAddressZip.m */,
 				4299EAFF1A58CAFA00DB15D1 /* PTKCard.h */,
@@ -413,6 +470,42 @@
 				4299EB0F1A58CAFA00DB15D1 /* PTKView.m */,
 			);
 			name = PaymentKit;
+			sourceTree = "<group>";
+		};
+		4299EB1D1A58ECDA00DB15D1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4299EB1E1A58ECE800DB15D1 /* Cards */,
+				4299EB311A58ECE800DB15D1 /* gradient@2x.png */,
+				4299EB321A58ECE800DB15D1 /* textfield.png */,
+				4299EB331A58ECE800DB15D1 /* textfield@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4299EB1E1A58ECE800DB15D1 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				4299EB1F1A58ECE800DB15D1 /* amex.png */,
+				4299EB201A58ECE800DB15D1 /* amex@2x.png */,
+				4299EB211A58ECE800DB15D1 /* cvc-amex.png */,
+				4299EB221A58ECE800DB15D1 /* cvc-amex@2x.png */,
+				4299EB231A58ECE800DB15D1 /* cvc.png */,
+				4299EB241A58ECE800DB15D1 /* cvc@2x.png */,
+				4299EB251A58ECE800DB15D1 /* diners.png */,
+				4299EB261A58ECE800DB15D1 /* diners@2x.png */,
+				4299EB271A58ECE800DB15D1 /* discover.png */,
+				4299EB281A58ECE800DB15D1 /* discover@2x.png */,
+				4299EB291A58ECE800DB15D1 /* jcb.png */,
+				4299EB2A1A58ECE800DB15D1 /* jcb@2x.png */,
+				4299EB2B1A58ECE800DB15D1 /* mastercard.png */,
+				4299EB2C1A58ECE800DB15D1 /* mastercard@2x.png */,
+				4299EB2D1A58ECE800DB15D1 /* placeholder.png */,
+				4299EB2E1A58ECE800DB15D1 /* placeholder@2x.png */,
+				4299EB2F1A58ECE800DB15D1 /* visa.png */,
+				4299EB301A58ECE800DB15D1 /* visa@2x.png */,
+			);
+			path = Cards;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,9 +589,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4299EB1B1A58EB9100DB15D1 /* creditCardBg.png in Resources */,
 				13A90E371A4D41EF00CCCE1B /* Main.storyboard in Resources */,
+				4299EB481A58ECE800DB15D1 /* textfield@2x.png in Resources */,
+				4299EB1C1A58EB9100DB15D1 /* creditCardBg@2x.png in Resources */,
+				4299EB3C1A58ECE800DB15D1 /* discover.png in Resources */,
+				4299EB4D1A58F36000DB15D1 /* iconConfirmation.png in Resources */,
+				4299EB421A58ECE800DB15D1 /* placeholder.png in Resources */,
+				4299EB3B1A58ECE800DB15D1 /* diners@2x.png in Resources */,
+				4299EB401A58ECE800DB15D1 /* mastercard.png in Resources */,
+				4299EB3A1A58ECE800DB15D1 /* diners.png in Resources */,
+				4299EB441A58ECE800DB15D1 /* visa.png in Resources */,
+				4299EB391A58ECE800DB15D1 /* cvc@2x.png in Resources */,
+				4299EB381A58ECE800DB15D1 /* cvc.png in Resources */,
+				4299EB471A58ECE800DB15D1 /* textfield.png in Resources */,
+				4299EB451A58ECE800DB15D1 /* visa@2x.png in Resources */,
+				4299EB351A58ECE800DB15D1 /* amex@2x.png in Resources */,
+				4299EB371A58ECE800DB15D1 /* cvc-amex@2x.png in Resources */,
+				4299EB431A58ECE800DB15D1 /* placeholder@2x.png in Resources */,
+				4299EB461A58ECE800DB15D1 /* gradient@2x.png in Resources */,
+				4299EB3F1A58ECE800DB15D1 /* jcb@2x.png in Resources */,
+				4299EB411A58ECE800DB15D1 /* mastercard@2x.png in Resources */,
+				4299EB3E1A58ECE800DB15D1 /* jcb.png in Resources */,
 				13A90E3C1A4D41EF00CCCE1B /* LaunchScreen.xib in Resources */,
+				4299EB3D1A58ECE800DB15D1 /* discover@2x.png in Resources */,
 				4299EA7F1A5899D700DB15D1 /* lajolla.gif in Resources */,
+				4299EB341A58ECE800DB15D1 /* amex.png in Resources */,
+				4299EB361A58ECE800DB15D1 /* cvc-amex.png in Resources */,
 				13A90E391A4D41EF00CCCE1B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,6 +641,7 @@
 				4299EAFB1A58CA5500DB15D1 /* StripeError.m in Sources */,
 				4299EB121A58CAFA00DB15D1 /* PTKCardCVC.m in Sources */,
 				4299EB101A58CAFA00DB15D1 /* PTKAddressZip.m in Sources */,
+				4299EB4B1A58F04D00DB15D1 /* FinishViewController.m in Sources */,
 				4299EAF91A58CA5500DB15D1 /* STPUtils.m in Sources */,
 				13A90E311A4D41EF00CCCE1B /* AppDelegate.m in Sources */,
 				4299EB161A58CAFA00DB15D1 /* PTKTextField.m in Sources */,
