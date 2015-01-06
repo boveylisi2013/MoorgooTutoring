@@ -97,12 +97,15 @@
                       
                       NSString *availableDays = @"";
                       NSString *strongString = @"";
-                      for(NSString *currentString in array)
+                      
+                      // sort the array of weekday strings, from Monday to Sunday
+                      NSMutableArray *sortedArray = [self sortWeekDays:array];
+                      for(NSString *currentString in sortedArray)
                       {
                           strongString = currentString;
                           strongString = [strongString substringToIndex:3];
                           availableDays = [availableDays stringByAppendingString:strongString];
-                          availableDays = [availableDays stringByAppendingString:@" "];
+                          availableDays = [availableDays stringByAppendingString:@"   "];
                       }
                       self.availableDaysLabel.text = availableDays;
                   }
@@ -119,6 +122,41 @@
              NSLog(@"Error: %@", errorString);
          }
      }];
+}
+
+// Helper method to sort the weekdays from Monday to Sunday
+-(NSMutableArray *)sortWeekDays:(NSMutableArray *)weekdaysArray
+{
+    NSMutableArray *sortedArray = [[NSMutableArray alloc] init];
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Monday"]) [sortedArray addObject:@"Monday"];
+    }
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Tuesday"]) [sortedArray addObject:@"Tuesday"];
+    }
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Wednesday"]) [sortedArray addObject:@"Wednesday"];
+    }
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Thursday"]) [sortedArray addObject:@"Thursday"];
+    }
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Friday"]) [sortedArray addObject:@"Friday"];
+    }
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Saturday"]) [sortedArray addObject:@"Saturday"];
+    }
+    for(NSString *curr in weekdaysArray)
+    {
+        if([curr isEqualToString:@"Sunday"]) [sortedArray addObject:@"Sunday"];
+    }
+    return sortedArray;
 }
 
 #pragma mark - buttonPressed methods
