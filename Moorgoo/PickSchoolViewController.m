@@ -23,6 +23,10 @@
     
     self.next.enabled = NO;
     [self addSchoolPicker];
+    
+    // Make the backbutton with only the chevron
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)
+                                                         forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)didReceiveMemoryWarning {

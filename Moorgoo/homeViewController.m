@@ -9,7 +9,7 @@
 #import "homeViewController.h"
 #import "ApplyTutorViewController.h"
 
-@interface homeViewController () <ApplyTutorViewControllerDelegate>
+@interface homeViewController () <ApplyTutorViewControllerDelegate,UIAlertViewDelegate>
 {
     NSMutableArray *classes;
 }
@@ -45,8 +45,28 @@
 
 -(IBAction)logoutPressed:(id)sender
 {
-    [PFUser logOut];
-    [self performSegueWithIdentifier:@"LogoutSuccessful" sender:self];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice"
+                                                    message:@"Are you sure you wanna logout?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Yes", nil];
+    [alert show];
+}
+
+// Logout confirmation
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Cancel"])
+    {
+        //
+    }
+    if([title isEqualToString:@"Yes"])
+    {
+        [PFUser logOut];
+        [self performSegueWithIdentifier:@"LogoutSuccessful" sender:self];
+    }
 }
 
 
