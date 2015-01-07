@@ -16,6 +16,9 @@
     
     NSMutableArray *hiddens;
     NSMutableArray *hiddensA;
+    
+    // Boolean to check whether it is "no class found" or not for tutor dashboard
+    BOOL noClassFound;
 
 }
 @end
@@ -147,6 +150,8 @@
              return;
          }
      }];
+    
+    noClassFound = false;
 }
 
 // Disable the horizontal scroll
@@ -401,8 +406,17 @@
     // configure text for cell
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     
-    if ([classItems count] != 0)  label.text = classItems[indexPath.row];
-    else  label.text = @"No class found";
+    if ([classItems count] != 0)
+    {
+        noClassFound = false;
+        label.text = classItems[indexPath.row];
+    }
+    else
+    {
+        
+        label.text = @"No class found";
+        noClassFound = true;
+    }
     
     return cell;
 }
@@ -411,8 +425,11 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    NSString *chosenString = label.text;
-    self.specificClassTextField.text = chosenString;
+    if(!noClassFound)
+    {
+        NSString *chosenString = label.text;
+        self.specificClassTextField.text = chosenString;
+    }
     [self.classesTableView setHidden:YES];
     [self.view endEditing:YES];
     //ChecklistItem *item = _items[indexPath.row];

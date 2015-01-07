@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Moorgoo. All rights reserved.
 //
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController 
 
 @property (nonatomic, weak) IBOutlet UITextField *userTextField;
 @property (nonatomic, weak) IBOutlet UITextField *passwordTextField;

@@ -259,6 +259,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="tutorDashBoardBtn" destination="lbk-lD-2ut" id="uKQ-WN-duj"/>
                         <segue destination="PVb-Y8-4uo" kind="presentation" identifier="LogoutSuccessful" modalTransitionStyle="flipHorizontal" id="RoX-8j-c6E"/>
                         <segue destination="H1p-Wp-UKj" kind="show" identifier="NotTutor" id="O3S-CU-h66"/>
                         <segue destination="ufK-zP-QPQ" kind="show" identifier="BeATutor" id="LKq-LG-x1P"/>
@@ -392,7 +393,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Class do you need help with?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NT0-PB-SNP">
-                                <rect key="frame" x="22" y="21" width="279.5" height="21"/>
+                                <rect key="frame" x="22" y="21" width="280" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="bhX-XC-r8i"/>
                                 </constraints>
@@ -504,7 +505,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: You can only schedule a tutor after 2 days from now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fH-AY-Jlb">
-                                <rect key="frame" x="150" y="334" width="299.5" height="21"/>
+                                <rect key="frame" x="150" y="334" width="300" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="t7O-Wv-Cm8"/>
                                 </constraints>
@@ -687,7 +688,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congradulations!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hiQ-rQ-VS9">
-                                <rect key="frame" x="218" y="201" width="165.5" height="31"/>
+                                <rect key="frame" x="218" y="201" width="166" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="6gf-Jq-CQp"/>
                                 </constraints>
@@ -1264,7 +1265,7 @@
         <image name="iconConfirmation.png" width="130" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RoX-8j-c6E"/>
         <segue reference="e4l-iv-apV"/>
-        <segue reference="okZ-5Z-5RS"/>
     </inferredMetricsTieBreakers>
 </document>

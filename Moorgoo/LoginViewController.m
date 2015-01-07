@@ -8,11 +8,11 @@
 
 #import "LoginViewController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <UITextFieldDelegate>
 
 @end
 
-@implementation LoginViewController
+@implementation LoginViewController 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -20,6 +20,8 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    self.userTextField.delegate = self;
+    self.passwordTextField.delegate = self;
 }
 
 -(void)dismissKeyboard {
@@ -43,6 +45,21 @@
             [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
+}
+
+
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.passwordTextField)
+    {
+        [self.userTextField resignFirstResponder];
+    }
+    else if (textField == self.userTextField)
+    {
+        [self.passwordTextField becomeFirstResponder];
+    }
+    return YES;
 }
 
 

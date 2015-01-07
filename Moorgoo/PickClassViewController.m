@@ -17,6 +17,8 @@
     
     UIPickerView *helpPicker;
     NSArray *pickerHelpArray;
+    
+    BOOL noClassFound;
 }
 @end
 
@@ -49,6 +51,8 @@
     [self.tableView setHidden:YES];
     
     [self addSchoolPicker];
+    
+    noClassFound = false;
 }
 
 // Method to query data from parse
@@ -198,8 +202,16 @@
     // configure text for cell
     UILabel *label = (UILabel *)[cell viewWithTag:2000];
     
-    if ([classItems count] != 0)  label.text = classItems[indexPath.row];
-    else  label.text = @"No class found";
+    if ([classItems count] != 0)
+    {
+        label.text = classItems[indexPath.row];
+        noClassFound = false;
+    }
+    else
+    {
+        label.text = @"No tutor is available for this class";
+        noClassFound = true;
+    }
     
     return cell;
 }
@@ -208,8 +220,13 @@
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell viewWithTag:2000];
-    NSString *chosenString = label.text;
-    self.specificClassTextField.text = chosenString;
+    
+    if(!noClassFound)
+    {
+        NSString *chosenString = label.text;
+        self.specificClassTextField.text = chosenString;
+    }
+    
     [self.tableView setHidden:YES];
     [self.view endEditing:YES];
     //ChecklistItem *item = _items[indexPath.row];

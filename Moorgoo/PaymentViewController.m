@@ -62,6 +62,8 @@
     
     self.hud = [[MBProgressHUD alloc] initWithView:self.view];
     [self.view addSubview:self.hud];
+    
+    [self.view endEditing:NO];
 }
 
 - (void)didReceiveMemoryWarning {

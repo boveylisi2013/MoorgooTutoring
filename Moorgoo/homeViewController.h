@@ -11,5 +11,6 @@
 @interface homeViewController : UIViewController
 
 -(IBAction)logoutPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *tutorDashBoardBtn;
 
 @end

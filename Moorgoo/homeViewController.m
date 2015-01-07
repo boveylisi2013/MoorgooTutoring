@@ -26,6 +26,14 @@
     // in order to get the data done before tha table view load the data, but this way did not work
     // classes = [[NSMutableArray alloc] init];
     // [self getClasses:classes];
+    
+    PFUser *currentUser = [PFUser currentUser];
+    BOOL isTutor = [[currentUser objectForKey:@"isTutor"] boolValue];
+    if(!isTutor)
+    {
+        [self.tutorDashBoardBtn setTitle:@"Want to be a tutor" forState:UIControlStateNormal];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

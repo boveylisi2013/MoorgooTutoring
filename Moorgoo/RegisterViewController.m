@@ -8,7 +8,8 @@
 
 #import "RegisterViewController.h"
 
-@interface RegisterViewController () {
+@interface RegisterViewController () <UITextFieldDelegate>
+{
     UIPickerView *schoolPicker;
     UIPickerView *departmentPicker;
     NSMutableArray *pickerSchoolArray;
@@ -29,6 +30,49 @@
     
     [self addSchoolPicker];
     [self addDepartmentPicker];
+    
+    self.firstRegisterTextField.delegate = self;
+    self.lastRegisterTextField.delegate = self;
+    self.emailRegisterTextField.delegate = self;
+    self.passwordRegisterTextField.delegate = self;
+    self.phoneRegisterTextField.delegate = self;
+    self.schoolRegisterTextField.delegate = self;
+    self.departmentRegisterTextField.delegate = self;
+    
+}
+
+// When hit return key, go to "next line" --- next textField
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == self.firstRegisterTextField)
+    {
+        [self.lastRegisterTextField becomeFirstResponder];
+    }
+    else if (textField == self.lastRegisterTextField)
+    {
+        [self.emailRegisterTextField becomeFirstResponder];
+    }
+    else if (textField == self.emailRegisterTextField)
+    {
+        [self.passwordRegisterTextField becomeFirstResponder];
+    }
+    else if (textField == self.passwordRegisterTextField)
+    {
+        [self.phoneRegisterTextField becomeFirstResponder];
+    }
+    else if (textField == self.phoneRegisterTextField)
+    {
+        [self.schoolRegisterTextField becomeFirstResponder];
+    }
+    else if (textField == self.schoolRegisterTextField)
+    {
+        [self.departmentRegisterTextField becomeFirstResponder];
+    }
+    else if (textField == self.departmentRegisterTextField)
+    {
+        [self.firstRegisterTextField becomeFirstResponder];
+    }
+    return YES;
 }
 
 -(void)dismissKeyboard {
