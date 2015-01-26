@@ -8,10 +8,16 @@
 
 #import "homeViewController.h"
 #import "ApplyTutorViewController.h"
+#import "AccountSettingViewController.h"
 
 @interface homeViewController () <ApplyTutorViewControllerDelegate,UIAlertViewDelegate>
 {
     NSMutableArray *classes;
+    NSString *currentUserFirstName;
+    NSString *currentUserLastName;
+    NSString *currentUserPhoneNumber;
+    NSString *currentUserSchool;
+    NSString *currentUserDepartment;
 }
 @end
 
@@ -33,6 +39,14 @@
     {
         [self.tutorDashBoardBtn setTitle:@"Want to be a tutor" forState:UIControlStateNormal];
     }
+    
+    // Query data for late passing to other view controller
+    currentUserFirstName = [currentUser objectForKey:@"firstName"];
+    currentUserLastName = [currentUser objectForKey:@"lastName"];
+    currentUserPhoneNumber = [[currentUser objectForKey:@"phone"] stringValue];
+    currentUserSchool = [currentUser objectForKey:@"school"];
+    currentUserDepartment = [currentUser objectForKey:@"department"];
+    
     
 }
 
@@ -92,6 +106,17 @@
     }
 }
 
+- (IBAction)videoButtonPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"watchVideo" sender:self];
+}
+
+- (IBAction)accountSettingPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"accountSetting" sender:self];
+}
+
+
 // Former Trial: Tried to query the data in homeViewController and passed it into the
 // property(Would make classItems a property in this case) of ApplyTutorViewController
 // in order to get the data done before tha table view load the data, but this way did not work
@@ -119,6 +144,16 @@
         PFUser *currentUser = [PFUser currentUser];
         NSString *userID = currentUser.objectId;
         controller.currentUserId = userID;
+    }
+    
+    if([segue.identifier isEqualToString:@"accountSetting"])
+    {
+        AccountSettingViewController *controller = (AccountSettingViewController *)segue.destinationViewController;
+        controller.firstName = currentUserFirstName;
+        controller.lastName = currentUserLastName;
+        controller.phoneNumber = currentUserPhoneNumber;
+        controller.school = currentUserSchool;
+        controller.department = currentUserDepartment;
     }
 }
 

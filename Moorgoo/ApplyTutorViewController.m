@@ -191,7 +191,7 @@
         [self.classesTableView setHidden:NO];
         NSString *inputString = [textField.text uppercaseString];
         NSMutableArray *discardItems = [[NSMutableArray alloc] init];
-        
+            
         // Filter out classes based on user input
         for (NSString *currentString in classItems)
         {

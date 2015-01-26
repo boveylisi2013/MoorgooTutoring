@@ -30,6 +30,11 @@
 		13A90E3C1A4D41EF00CCCE1B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A90E3A1A4D41EF00CCCE1B /* LaunchScreen.xib */; };
 		13A90E481A4D41EF00CCCE1B /* MoorgooTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A90E471A4D41EF00CCCE1B /* MoorgooTests.m */; };
 		13A90E531A4DD0E300CCCE1B /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A90E521A4DD0E300CCCE1B /* RegisterViewController.m */; };
+		423DA9FB1A6C23C000EAEE4C /* HCYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 423DA9FA1A6C23C000EAEE4C /* HCYoutubeParser.m */; };
+		4250ADAE1A6B87A60090D348 /* VideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4250ADAD1A6B87A60090D348 /* VideoViewController.m */; };
+		4250ADB11A6B8AA10090D348 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4250ADB01A6B8AA10090D348 /* MediaPlayer.framework */; };
+		4259CE221A6E461300FA5B0A /* ChooseVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4259CE211A6E461300FA5B0A /* ChooseVideoViewController.m */; };
+		426725ED1A75C75C00168A26 /* passwordResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426725EC1A75C75C00168A26 /* passwordResetViewController.m */; };
 		426B82221A5203EA009E30FE /* ApplyTutorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 426B82211A5203EA009E30FE /* ApplyTutorViewController.m */; };
 		42898D661A54C5A4006E2DBC /* StaticTutorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42898D651A54C5A4006E2DBC /* StaticTutorViewController.m */; };
 		429245501A4F74C8000CA0B7 /* EntranceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */; };
@@ -81,6 +86,7 @@
 		4299EB481A58ECE800DB15D1 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB331A58ECE800DB15D1 /* textfield@2x.png */; };
 		4299EB4B1A58F04D00DB15D1 /* FinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EB4A1A58F04D00DB15D1 /* FinishViewController.m */; };
 		4299EB4D1A58F36000DB15D1 /* iconConfirmation.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */; };
+		429CB2E91A72DF24009E37CB /* AccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CB2E81A72DF24009E37CB /* AccountSettingViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +132,15 @@
 		13A90E471A4D41EF00CCCE1B /* MoorgooTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoorgooTests.m; sourceTree = "<group>"; };
 		13A90E511A4DD0E300CCCE1B /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		13A90E521A4DD0E300CCCE1B /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		423DA9F91A6C23C000EAEE4C /* HCYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCYoutubeParser.h; sourceTree = "<group>"; };
+		423DA9FA1A6C23C000EAEE4C /* HCYoutubeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCYoutubeParser.m; sourceTree = "<group>"; };
+		4250ADAC1A6B87A60090D348 /* VideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoViewController.h; sourceTree = "<group>"; };
+		4250ADAD1A6B87A60090D348 /* VideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewController.m; sourceTree = "<group>"; };
+		4250ADB01A6B8AA10090D348 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		4259CE201A6E461300FA5B0A /* ChooseVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseVideoViewController.h; sourceTree = "<group>"; };
+		4259CE211A6E461300FA5B0A /* ChooseVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseVideoViewController.m; sourceTree = "<group>"; };
+		426725EB1A75C75C00168A26 /* passwordResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = passwordResetViewController.h; sourceTree = "<group>"; };
+		426725EC1A75C75C00168A26 /* passwordResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = passwordResetViewController.m; sourceTree = "<group>"; };
 		426B82201A5203EA009E30FE /* ApplyTutorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApplyTutorViewController.h; sourceTree = "<group>"; };
 		426B82211A5203EA009E30FE /* ApplyTutorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ApplyTutorViewController.m; sourceTree = "<group>"; };
 		42898D641A54C5A4006E2DBC /* StaticTutorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StaticTutorViewController.h; sourceTree = "<group>"; };
@@ -205,6 +220,8 @@
 		4299EB491A58F04D00DB15D1 /* FinishViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinishViewController.h; sourceTree = "<group>"; };
 		4299EB4A1A58F04D00DB15D1 /* FinishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinishViewController.m; sourceTree = "<group>"; };
 		4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconConfirmation.png; sourceTree = "<group>"; };
+		429CB2E71A72DF24009E37CB /* AccountSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingViewController.h; sourceTree = "<group>"; };
+		429CB2E81A72DF24009E37CB /* AccountSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4250ADB11A6B8AA10090D348 /* MediaPlayer.framework in Frameworks */,
 				134622771A4DE72200D36682 /* Security.framework in Frameworks */,
 				13439B311A4DEFF400DECC9A /* Bolts.framework in Frameworks */,
 				13439B321A4DEFF400DECC9A /* Parse.framework in Frameworks */,
@@ -251,6 +269,7 @@
 		134622631A4DE55400D36682 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4250ADB01A6B8AA10090D348 /* MediaPlayer.framework */,
 				13439B2F1A4DEFF400DECC9A /* Bolts.framework */,
 				13439B301A4DEFF400DECC9A /* Parse.framework */,
 				1346227A1A4DE74000D36682 /* Social.framework */,
@@ -291,6 +310,8 @@
 		13A90E2A1A4D41EF00CCCE1B /* Moorgoo */ = {
 			isa = PBXGroup;
 			children = (
+				429CB2EA1A72DF39009E37CB /* Account */,
+				4250ADAF1A6B87B40090D348 /* Video */,
 				4299EA871A58C3BF00DB15D1 /* Vendor */,
 				4299EA6A1A56292C00DB15D1 /* NeedTutor */,
 				42898D611A54BAA9006E2DBC /* Images */,
@@ -345,6 +366,27 @@
 				4292454F1A4F74C8000CA0B7 /* EntranceViewController.m */,
 			);
 			name = Login/Register;
+			sourceTree = "<group>";
+		};
+		423DA9F81A6C239500EAEE4C /* HCYoutubeParser */ = {
+			isa = PBXGroup;
+			children = (
+				423DA9F91A6C23C000EAEE4C /* HCYoutubeParser.h */,
+				423DA9FA1A6C23C000EAEE4C /* HCYoutubeParser.m */,
+			);
+			name = HCYoutubeParser;
+			sourceTree = "<group>";
+		};
+		4250ADAF1A6B87B40090D348 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				423DA9F81A6C239500EAEE4C /* HCYoutubeParser */,
+				4250ADAC1A6B87A60090D348 /* VideoViewController.h */,
+				4250ADAD1A6B87A60090D348 /* VideoViewController.m */,
+				4259CE201A6E461300FA5B0A /* ChooseVideoViewController.h */,
+				4259CE211A6E461300FA5B0A /* ChooseVideoViewController.m */,
+			);
+			name = Video;
 			sourceTree = "<group>";
 		};
 		426B82231A5203FC009E30FE /* Tutor */ = {
@@ -508,6 +550,17 @@
 			path = Cards;
 			sourceTree = "<group>";
 		};
+		429CB2EA1A72DF39009E37CB /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				429CB2E71A72DF24009E37CB /* AccountSettingViewController.h */,
+				429CB2E81A72DF24009E37CB /* AccountSettingViewController.m */,
+				426725EB1A75C75C00168A26 /* passwordResetViewController.h */,
+				426725EC1A75C75C00168A26 /* passwordResetViewController.m */,
+			);
+			name = Account;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -638,9 +691,12 @@
 				4299EAF51A58CA5500DB15D1 /* STPAPIConnection.m in Sources */,
 				13A90E341A4D41EF00CCCE1B /* LoginViewController.m in Sources */,
 				4299EB131A58CAFA00DB15D1 /* PTKCardExpiry.m in Sources */,
+				423DA9FB1A6C23C000EAEE4C /* HCYoutubeParser.m in Sources */,
 				4299EAFB1A58CA5500DB15D1 /* StripeError.m in Sources */,
 				4299EB121A58CAFA00DB15D1 /* PTKCardCVC.m in Sources */,
+				4250ADAE1A6B87A60090D348 /* VideoViewController.m in Sources */,
 				4299EB101A58CAFA00DB15D1 /* PTKAddressZip.m in Sources */,
+				4259CE221A6E461300FA5B0A /* ChooseVideoViewController.m in Sources */,
 				4299EB4B1A58F04D00DB15D1 /* FinishViewController.m in Sources */,
 				4299EAF91A58CA5500DB15D1 /* STPUtils.m in Sources */,
 				13A90E311A4D41EF00CCCE1B /* AppDelegate.m in Sources */,
@@ -648,10 +704,12 @@
 				4299EB181A58CAFA00DB15D1 /* PTKView.m in Sources */,
 				429245501A4F74C8000CA0B7 /* EntranceViewController.m in Sources */,
 				4299EB171A58CAFA00DB15D1 /* PTKUSAddressZip.m in Sources */,
+				426725ED1A75C75C00168A26 /* passwordResetViewController.m in Sources */,
 				4299EB141A58CAFA00DB15D1 /* PTKCardNumber.m in Sources */,
 				4299EAF71A58CA5500DB15D1 /* STPCard.m in Sources */,
 				4299EA821A58AA6100DB15D1 /* PaymentViewController.m in Sources */,
 				4299EAF61A58CA5500DB15D1 /* STPBankAccount.m in Sources */,
+				429CB2E91A72DF24009E37CB /* AccountSettingViewController.m in Sources */,
 				4299EAF81A58CA5500DB15D1 /* STPToken.m in Sources */,
 				4299EA721A56295E00DB15D1 /* PickSchoolViewController.m in Sources */,
 				4299EA711A56295E00DB15D1 /* PickClassViewController.m in Sources */,

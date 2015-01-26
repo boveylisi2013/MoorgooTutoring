@@ -95,14 +95,14 @@
 */
 
 // Helper method to check whether the string contains only numbers or not
--(BOOL)onlyContainsNumber:(NSString *)string
-{
-    NSCharacterSet * _NumericOnly = [NSCharacterSet decimalDigitCharacterSet];
-    NSCharacterSet * myStringSet = [NSCharacterSet characterSetWithCharactersInString:string];
-    
-    if ([_NumericOnly isSupersetOfSet: myStringSet])  return true;
-    else return false;
-}
+//-(BOOL)onlyContainsNumber:(NSString *)string
+//{
+//    NSCharacterSet * _NumericOnly = [NSCharacterSet decimalDigitCharacterSet];
+//    NSCharacterSet * myStringSet = [NSCharacterSet characterSetWithCharactersInString:string];
+//    
+//    if ([_NumericOnly isSupersetOfSet: myStringSet])  return true;
+//    else return false;
+//}
 
 -(IBAction)signUpUserPressed:(id)sender
 {
@@ -118,16 +118,15 @@
     if (self.phoneRegisterTextField.text.length == 0) {
         errorString = [errorString stringByAppendingString:@"Please input your phone number\n"];
     }
-    else if(![self onlyContainsNumber:self.phoneRegisterTextField.text])
-    {
-        errorString = [errorString stringByAppendingString:@"Please input the correct phone number\n(with only number characters)\n"];
-    }
     
     if (self.schoolRegisterTextField.text.length == 0) {
         errorString = [errorString stringByAppendingString:@"Please choose your school\n"];
     }
     if (self.departmentRegisterTextField.text.length == 0) {
         errorString = [errorString stringByAppendingString:@"Please choose your department\n"];
+    }
+    if (self.passwordRegisterTextField.text.length < 4){
+        errorString = [errorString stringByAppendingString:@"Password has to be at least 4 digits long"];
     }
     
     PFUser *user = [PFUser user];
