@@ -11,6 +11,7 @@
 @interface PaymentViewController ()
 {
     NSInteger amount;
+    PFUser *currentUser;
 }
 
 
@@ -29,7 +30,7 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     [self.view addGestureRecognizer:tap];
     
-    PFUser *currentUser = [PFUser currentUser];
+    currentUser = [PFUser currentUser];
     self.emailLabel.text = currentUser.email;
     self.phoneLabel.text = [[currentUser objectForKey:@"phone"] stringValue];
  
@@ -53,10 +54,10 @@
     creditCardLabel.shadowColor = [UIColor colorWithWhite:1.0f alpha:0.7];
     creditCardLabel.shadowOffset = CGSizeMake(0.0f, 0.5f);
     [creditCardLabel sizeToFit];
-    creditCardLabel.frame = CGRectMake(25.0f, 35.0f, creditCardLabel.frame.size.width, creditCardLabel.frame.size.height);
+    creditCardLabel.frame = CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f+8.0f, 35.0f, creditCardLabel.frame.size.width, creditCardLabel.frame.size.height);
     [self.view addSubview:creditCardLabel];
     
-    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake(15.0f, 85.0f, 290.0f, 55.0f) andKey:STRIPE_PUBLISHABLE_KEY];
+    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f+8.0f, 85.0f, 290.0f, 55.0f) andKey:STRIPE_PUBLISHABLE_KEY];
     self.checkoutView.delegate = self;
     [self.view addSubview:self.checkoutView];
     
@@ -81,20 +82,6 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//- (void)buy:(id)sender {
-//    self.hud.labelText = NSLocalizedString(@"Authorizing...", @"Authorizing...");
-//    [self.hud show:YES];
-//    
-//    [self.checkoutView createToken:^(STPToken *token, NSError *error) {
-//        if (error) {
-//            [self.hud hide:YES];
-//            [self displayError:error];
-//        } else {
-//            [self charge:token];
-//        }
-//    }];
-//}
-
 - (IBAction)payButtonPressed:(UIButton *)sender
 {
     self.hud.labelText = NSLocalizedString(@"Authorizing...", @"Authorizing...");
@@ -108,8 +95,6 @@
             [self charge:token];
         }
     }];
-    
-    [self performSegueWithIdentifier:@"paymentToFinish" sender:self];
 }
 
 #pragma mark - ()
@@ -127,16 +112,15 @@
     self.hud.labelText = @"Charging...";
     
     NSDictionary *productInfo = @{
-                                  @"itemName": @"xxx",
-                                  @"size": @"N/A",
                                   @"cardToken": token.tokenId,
-                                  @"name": @"xxx",
-                                  @"email": @"boveylisi@gmail.com",
-                                  @"address": @"xxx",
-                                  @"zip": @"xxx",
-                                  @"city_state": @"xxx"
+                                  @"email": currentUser.email,
+                                  @"phone": [[currentUser objectForKey:@"phone"] stringValue],
+                                  @"course": self.course,
+                                  @"date": self.date,
+                                  @"hour": self.hour,
+                                  @"price": [NSNumber numberWithInteger:amount]
                                   };
-    [PFCloud callFunctionInBackground:@"purchaseItem"
+    [PFCloud callFunctionInBackground:@"purchase"
                        withParameters:productInfo
                                 block:^(id object, NSError *error) {
                                     [self.hud hide:YES];
@@ -150,14 +134,22 @@
                                     }
                                     else
                                     {
-                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Pay Successfully"
                                                                                         message:@"Thank you for your payment, our customer representive will contact you soon"
                                                                                        delegate:nil
                                                                               cancelButtonTitle:@"OK"
                                                                               otherButtonTitles:nil];
+                                        [self performSegueWithIdentifier:@"paymentToFinish" sender:self];
                                         [alert show];
                                     }
                                 }];
+    
+    
+    
+    [PFCloud callFunctionInBackground:@"emailCustomer"
+                       withParameters:productInfo
+                                block:^(id object, NSError *error) {}];
+    
 }
 
 @end

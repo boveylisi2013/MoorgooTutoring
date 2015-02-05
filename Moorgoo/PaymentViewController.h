@@ -26,9 +26,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *hourLabel;
 @property (weak, nonatomic) IBOutlet UILabel *amountLabel;
 
-//@property (nonatomic) PFObject *product;
 @property (nonatomic, copy) NSString *size;
-//@property (nonatomic, strong) NSDictionary *shippingInfo;
 @property (nonatomic, strong) STPCheckoutView *checkoutView;
 @property (nonatomic, strong) MBProgressHUD *hud;
 
