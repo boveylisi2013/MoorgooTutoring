@@ -41,9 +41,9 @@
     amount = [[self.hour substringToIndex:1] integerValue] * 25;
     self.amountLabel.text = [NSString stringWithFormat:@"$%li",(long)amount];
     
-    UIImage *creditCardImage = [UIImage imageNamed:@"CreditCardBg.png"];
+    UIImage *creditCardImage = [UIImage imageNamed:@"creditCardBg"];
     UIImageView *creditCardView = [[UIImageView alloc] initWithImage:creditCardImage];
-    creditCardView.frame = CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f, 10.0f, creditCardImage.size.width, creditCardImage.size.height);
+    creditCardView.frame = CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f, 50.0f, creditCardImage.size.width, creditCardImage.size.height);
     [self.view addSubview:creditCardView];
     
     UILabel *creditCardLabel = [[UILabel alloc] init];
@@ -54,10 +54,10 @@
     creditCardLabel.shadowColor = [UIColor colorWithWhite:1.0f alpha:0.7];
     creditCardLabel.shadowOffset = CGSizeMake(0.0f, 0.5f);
     [creditCardLabel sizeToFit];
-    creditCardLabel.frame = CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f+8.0f, 35.0f, creditCardLabel.frame.size.width, creditCardLabel.frame.size.height);
+    creditCardLabel.frame = CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f+8.0f, 75.0f, creditCardLabel.frame.size.width, creditCardLabel.frame.size.height);
     [self.view addSubview:creditCardLabel];
     
-    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f+8.0f, 85.0f, 290.0f, 55.0f) andKey:STRIPE_PUBLISHABLE_KEY];
+    self.checkoutView = [[STPCheckoutView alloc] initWithFrame:CGRectMake((self.view.frame.size.width - creditCardImage.size.width)/2.0f+8.0f, 125.0f, 290.0f, 55.0f) andKey:STRIPE_PUBLISHABLE_KEY];
     self.checkoutView.delegate = self;
     [self.view addSubview:self.checkoutView];
     
@@ -118,7 +118,9 @@
                                   @"course": self.course,
                                   @"date": self.date,
                                   @"hour": self.hour,
-                                  @"price": [NSNumber numberWithInteger:amount]
+                                  @"price": [NSNumber numberWithInteger:amount],
+                                  @"firstName": [currentUser objectForKey:@"firstName"],
+                                  @"lastName": [currentUser objectForKey:@"lastName"]
                                   };
     [PFCloud callFunctionInBackground:@"purchase"
                        withParameters:productInfo
@@ -139,6 +141,26 @@
                                                                                        delegate:nil
                                                                               cancelButtonTitle:@"OK"
                                                                               otherButtonTitles:nil];
+                                        
+                                        /////////////////save to transaction
+                                        PFObject *transaction = [PFObject objectWithClassName:@"transaction"];
+                                        
+                                        [transaction setObject:currentUser.objectId forKey:@"user_id"];
+                                        [transaction setObject:self.course forKey:@"class"];
+                                        [transaction setObject:self.date forKey:@"date"];
+                                        [transaction setObject:[NSNumber numberWithInteger:[self.hour integerValue]] forKey:@"hours"];
+                                        [transaction setObject:[NSNumber numberWithInteger:amount] forKey:@"amount"];
+                                        [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                            if (succeeded){
+                                                NSLog(@"Object Uploaded!");
+                                            }
+                                            else{
+                                                NSString *errorString = [[error userInfo] objectForKey:@"error"];
+                                                NSLog(@"Error: %@", errorString);
+                                            }
+                                        }];
+                                        
+                                        /////////////////
                                         [self performSegueWithIdentifier:@"paymentToFinish" sender:self];
                                         [alert show];
                                     }
@@ -146,7 +168,7 @@
     
     
     
-    [PFCloud callFunctionInBackground:@"emailCustomer"
+    [PFCloud callFunctionInBackground:@"emailAfterTransaction"
                        withParameters:productInfo
                                 block:^(id object, NSError *error) {}];
     

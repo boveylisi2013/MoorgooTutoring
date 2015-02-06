@@ -31,7 +31,7 @@ Parse.Cloud.define("purchase", function(request, response) {
 
 
 
-Parse.Cloud.define("emailCustomer", function(request, response) {
+Parse.Cloud.define("emailAfterTransaction", function(request, response) {
   Parse.Cloud.useMasterKey();
 
   // Generate the email body string.
@@ -50,8 +50,35 @@ Parse.Cloud.define("emailCustomer", function(request, response) {
 
   Mailgun.sendEmail({
     to: request.params.email,
-    from: 'moorgoo2014@gmail.com',
+    from: 'moorgootutor@gmail.com',
     subject: 'Your order for Moorgoo tutor was successful!',
+    text: body
+    }, {
+    success: function(httpResponse) {
+      console.log(httpResponse);
+      response.success("Email sent!");
+    },
+    error: function(httpResponse) {
+      console.error(httpResponse);
+      response.error("Uh oh, something went wrong");
+    }
+  });
+
+  // Generate the email body string.
+  body = "New costumer has ordered for the following item: \n\n" + "Item: Moorgoo Tutor Service\n";
+
+  body += "Name: " + request.params.firstName +" "+ request.params.lastName + "\n" +
+          "Course: " + request.params.course + "\n" +
+          "Date: " + request.params.date + "\n" +
+          "Hours: " + request.params.hour + "\n" +
+          "Price: " + request.params.price + ".00 dollars\n\n" +
+          "Contact: " + request.params.phone + " (phone) " + request.params.email + " (email)\n" + 
+          "The Moorgoo Educational Corporation";
+
+  Mailgun.sendEmail({
+    to: 'moorgootutor@gmail.com',
+    from: 'moorgootutor@gmail.com',
+    subject: 'New Tutoring Request',
     text: body
     }, {
     success: function(httpResponse) {
