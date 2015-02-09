@@ -87,6 +87,7 @@
 		4299EB4B1A58F04D00DB15D1 /* FinishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EB4A1A58F04D00DB15D1 /* FinishViewController.m */; };
 		4299EB4D1A58F36000DB15D1 /* iconConfirmation.png in Resources */ = {isa = PBXBuildFile; fileRef = 4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */; };
 		429CB2E91A72DF24009E37CB /* AccountSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 429CB2E81A72DF24009E37CB /* AccountSettingViewController.m */; };
+		42CF7B401A85E5C80083DC63 /* PaymentHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CF7B3F1A85E5C80083DC63 /* PaymentHistoryViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -222,6 +223,8 @@
 		4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iconConfirmation.png; sourceTree = "<group>"; };
 		429CB2E71A72DF24009E37CB /* AccountSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountSettingViewController.h; sourceTree = "<group>"; };
 		429CB2E81A72DF24009E37CB /* AccountSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountSettingViewController.m; sourceTree = "<group>"; };
+		42CF7B3E1A85E5C80083DC63 /* PaymentHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentHistoryViewController.h; sourceTree = "<group>"; };
+		42CF7B3F1A85E5C80083DC63 /* PaymentHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentHistoryViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +313,7 @@
 		13A90E2A1A4D41EF00CCCE1B /* Moorgoo */ = {
 			isa = PBXGroup;
 			children = (
+				42CF7B3D1A85E57E0083DC63 /* PaymentHistory */,
 				13A90E2F1A4D41EF00CCCE1B /* AppDelegate.h */,
 				13A90E301A4D41EF00CCCE1B /* AppDelegate.m */,
 				429CB2EA1A72DF39009E37CB /* Account */,
@@ -561,6 +565,15 @@
 			name = Account;
 			sourceTree = "<group>";
 		};
+		42CF7B3D1A85E57E0083DC63 /* PaymentHistory */ = {
+			isa = PBXGroup;
+			children = (
+				42CF7B3E1A85E5C80083DC63 /* PaymentHistoryViewController.h */,
+				42CF7B3F1A85E5C80083DC63 /* PaymentHistoryViewController.m */,
+			);
+			name = PaymentHistory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -610,11 +623,11 @@
 				TargetAttributes = {
 					13A90E271A4D41EF00CCCE1B = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 8BJ4ZYX2K5;
+						DevelopmentTeam = 45EUJ954BC;
 					};
 					13A90E401A4D41EF00CCCE1B = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 8BJ4ZYX2K5;
+						DevelopmentTeam = 45EUJ954BC;
 						TestTargetID = 13A90E271A4D41EF00CCCE1B;
 					};
 				};
@@ -696,6 +709,7 @@
 				4299EAFB1A58CA5500DB15D1 /* StripeError.m in Sources */,
 				4299EB121A58CAFA00DB15D1 /* PTKCardCVC.m in Sources */,
 				4250ADAE1A6B87A60090D348 /* VideoViewController.m in Sources */,
+				42CF7B401A85E5C80083DC63 /* PaymentHistoryViewController.m in Sources */,
 				4299EB101A58CAFA00DB15D1 /* PTKAddressZip.m in Sources */,
 				4259CE221A6E461300FA5B0A /* ChooseVideoViewController.m in Sources */,
 				4299EB4B1A58F04D00DB15D1 /* FinishViewController.m in Sources */,

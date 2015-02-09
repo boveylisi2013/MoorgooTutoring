@@ -40,6 +40,13 @@
     // Initialize the weekdays array
     weekdays = @[@"Sunday", @"Monday", @"Tuesday", @"Wednesday", @"Thursday", @"Friday", @"Saturday"];
     
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reminder"
+                                                    message:@"1.You can only schedule a tutor after 2 days from now \n2.Please choose an available weekday. \n3.If the tutor is not available at the time you choose, we will re-schedule or refund"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"Got it"
+                                          otherButtonTitles:nil];
+    [alert show];
+    
 }
 
 - (void)didReceiveMemoryWarning {

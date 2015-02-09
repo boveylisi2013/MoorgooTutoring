@@ -14,6 +14,12 @@
     UIPickerView *departmentPicker;
     NSMutableArray *pickerSchoolArray;
     NSMutableArray *pickerDepartmentArray;
+    
+    NSString *currentUserFirstName;
+    NSString *currentUserLastName;
+    NSString *currentUserPhoneNumber;
+    NSString *currentUserSchool;
+    NSString *currentUserDepartment;
 }
 @end
 
@@ -25,12 +31,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    PFUser *currentUser = [PFUser currentUser];
+    
+    // Query data for late passing to other view controller
+    currentUserFirstName = [currentUser objectForKey:@"firstName"];
+    currentUserLastName = [currentUser objectForKey:@"lastName"];
+    currentUserPhoneNumber = [[currentUser objectForKey:@"phone"] stringValue];
+    currentUserSchool = [currentUser objectForKey:@"school"];
+    currentUserDepartment = [currentUser objectForKey:@"department"];
+    
     // Prefill the textFields
-    self.firstNameTextField.text = self.firstName;
-    self.lastNameTextField.text = self.lastName;
-    self.phoneNumberTextField.text = self.phoneNumber;
-    self.schoolTextField.text = self.school;
-    self.departmentTextField.text = self.department;
+    self.firstNameTextField.text = currentUserFirstName;
+    self.lastNameTextField.text = currentUserLastName;
+    self.phoneNumberTextField.text = currentUserPhoneNumber;
+    self.schoolTextField.text = currentUserSchool;
+    self.departmentTextField.text = currentUserDepartment;
     
     //keyboard disappear when tapping outside of text field
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
@@ -45,7 +60,7 @@
     self.schoolTextField.delegate = self;
     self.departmentTextField.delegate = self;
     
-    self.phoneNumberTextField.keyboardType =  UIKeyboardTypeDecimalPad;
+    //self.phoneNumberTextField.keyboardType =  UIKeyboardTypeDecimalPad;
 }
 
 -(void)dismissKeyboard {
@@ -211,7 +226,7 @@
     PFUser *user = [PFUser currentUser];
     [user setObject:self.firstNameTextField.text forKey:@"firstName"];
     [user setObject:self.lastNameTextField.text forKey:@"lastName"];
-    [user setObject:[NSNumber numberWithInt:[self.phoneNumberTextField.text intValue]] forKey:@"phone"];
+    [user setObject:[NSNumber numberWithInteger:[self.phoneNumberTextField.text integerValue]] forKey:@"phone"];
     [user setObject:self.schoolTextField.text forKey:@"school"];
     [user setObject:self.departmentTextField.text forKey:@"department"];
     user.password = self.passwordTextField.text;
@@ -230,7 +245,7 @@
     }
     else
     {
-        [user save];
+        [user saveInBackground];
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Updating completed"
                                                         message:@"You have successfully updated your account information"
                                                        delegate:nil

@@ -42,6 +42,8 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [material addObjectsFromArray:[objects valueForKey:@"materialCovered"]];
+            NSLog(@"%@",material);
+
             [URL addObjectsFromArray:[objects valueForKey:@"youtubeURL"]];
             [quarter addObjectsFromArray:[objects valueForKey:@"quarter"]];
             
@@ -75,6 +77,7 @@
     courseNameLabel.text = self.courseName;
     quarterLabel.text = quarterArray[indexPath.row];
     materialLabel.text = materialArray[indexPath.row];
+    
     
     return cell;
 

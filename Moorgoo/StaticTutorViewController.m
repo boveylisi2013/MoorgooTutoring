@@ -15,30 +15,23 @@
 @implementation StaticTutorViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)RequestButtonPressed:(UIButton *)sender
 {
     //verify the existance
     PFUser *currentUser = [PFUser currentUser];
-    
     PFQuery *query = [PFQuery queryWithClassName:@"tutor"];
     [query setLimit:1000];
     [query whereKey:@"user_id" equalTo:currentUser.objectId];
@@ -50,10 +43,7 @@
                 PFObject *tutor = [PFObject objectWithClassName:@"tutor"];
                 
                 NSMutableArray *classes = [[NSMutableArray alloc] init];
-
-                
                 NSMutableArray *availableDay = [[NSMutableArray alloc] init];
-
                 
                 [tutor setObject:currentUser.objectId forKey:@"user_id"];
                 [tutor setObject:classes forKey:@"classes"];
@@ -67,25 +57,57 @@
                         NSLog(@"Error: %@", errorString);
                     }
                 }];
+                
+                NSString *errorString = @"Thank you for your application. We will invite you for an interview!";
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice"
+                                                                message:errorString
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+
+                //////////////////////////send an email to our customer representative
+                
+                NSDictionary *newTutor = @{
+                                           @"email": currentUser.email,
+                                           @"phone": [[currentUser objectForKey:@"phone"] stringValue],
+                                           @"firstName": [currentUser objectForKey:@"firstName"],
+                                           @"lastName": [currentUser objectForKey:@"lastName"],
+                                           @"school": [currentUser objectForKey:@"school"]
+                                           };
+                
+                [PFCloud callFunctionInBackground:@"registerTutor"
+                                   withParameters:newTutor
+                                            block:^(id object, NSError *error) {
+                                                if (error)
+                                                {
+                                                    [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Error", @"Error")
+                                                                                message:[[error userInfo] objectForKey:@"error"]
+                                                                               delegate:nil
+                                                                      cancelButtonTitle:NSLocalizedString(@"OK", @"OK")
+                                                                      otherButtonTitles:nil] show];
+                                                }
+                                            }];
+            }
+            else {
+                NSString *errorString = @"We have received your application. We will invite you for an interview soon!";
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice"
+                                                                message:errorString
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
             }
             
-            NSString *errorString = @"Thank you for your application. We will contact you soon!";
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Notice"
-                                                            message:errorString
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
             return;
-            
-        }
-        else
-        {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            NSLog(@"Error: %@", errorString);
         }
     }];
+    
 }
 
 
+
+
+
 @end
+

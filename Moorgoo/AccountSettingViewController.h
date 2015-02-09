@@ -16,10 +16,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *departmentTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
-@property (nonatomic) NSString *firstName;
-@property (nonatomic) NSString *lastName;
-@property (nonatomic) NSString *phoneNumber;
-@property (nonatomic) NSString *school;
-@property (nonatomic) NSString *department;
 
 @end
