@@ -36,7 +36,7 @@
     // Query data for late passing to other view controller
     currentUserFirstName = [currentUser objectForKey:@"firstName"];
     currentUserLastName = [currentUser objectForKey:@"lastName"];
-    currentUserPhoneNumber = [[currentUser objectForKey:@"phone"] stringValue];
+    currentUserPhoneNumber = [currentUser objectForKey:@"phone"];
     currentUserSchool = [currentUser objectForKey:@"school"];
     currentUserDepartment = [currentUser objectForKey:@"department"];
     
@@ -226,11 +226,10 @@
     PFUser *user = [PFUser currentUser];
     [user setObject:self.firstNameTextField.text forKey:@"firstName"];
     [user setObject:self.lastNameTextField.text forKey:@"lastName"];
-    [user setObject:[NSNumber numberWithInteger:[self.phoneNumberTextField.text integerValue]] forKey:@"phone"];
+    [user setObject:self.phoneNumberTextField.text forKey:@"phone"];
     [user setObject:self.schoolTextField.text forKey:@"school"];
     [user setObject:self.departmentTextField.text forKey:@"department"];
     user.password = self.passwordTextField.text;
-    
     
     // Check whether the user inputs their information correctly or not
     if ([errorString length] != 0)

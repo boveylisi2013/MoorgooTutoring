@@ -70,7 +70,7 @@
                 
                 NSDictionary *newTutor = @{
                                            @"email": currentUser.email,
-                                           @"phone": [[currentUser objectForKey:@"phone"] stringValue],
+                                           @"phone": [currentUser objectForKey:@"phone"],
                                            @"firstName": [currentUser objectForKey:@"firstName"],
                                            @"lastName": [currentUser objectForKey:@"lastName"],
                                            @"school": [currentUser objectForKey:@"school"]

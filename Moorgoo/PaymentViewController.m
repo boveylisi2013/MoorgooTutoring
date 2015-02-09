@@ -32,7 +32,7 @@
     
     currentUser = [PFUser currentUser];
     self.emailLabel.text = currentUser.email;
-    self.phoneLabel.text = [[currentUser objectForKey:@"phone"] stringValue];
+    self.phoneLabel.text = [currentUser objectForKey:@"phone"];
  
     self.classLabel.text = self.course;
     self.dateTimeLabel.text = self.date;
@@ -114,7 +114,7 @@
     NSDictionary *productInfo = @{
                                   @"cardToken": token.tokenId,
                                   @"email": currentUser.email,
-                                  @"phone": [[currentUser objectForKey:@"phone"] stringValue],
+                                  @"phone": [currentUser objectForKey:@"phone"],
                                   @"course": self.course,
                                   @"date": self.date,
                                   @"hour": self.hour,

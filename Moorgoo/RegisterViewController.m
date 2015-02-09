@@ -135,7 +135,7 @@
     user.email = self.emailRegisterTextField.text;
     user.username = self.emailRegisterTextField.text;  //use email as login username
     user.password = self.passwordRegisterTextField.text;
-    [user setObject:[NSNumber numberWithInt:[self.phoneRegisterTextField.text intValue]] forKey:@"phone"];
+    [user setObject:self.phoneRegisterTextField.text forKey:@"phone"];
     [user setObject:self.schoolRegisterTextField.text forKey:@"school"];
     [user setObject:self.departmentRegisterTextField.text forKey:@"department"];
     [user setObject: [NSNumber numberWithBool:NO] forKey:@"isTutor"];
