@@ -42,15 +42,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             [material addObjectsFromArray:[objects valueForKey:@"materialCovered"]];
-            NSLog(@"%@",material);
 
             [URL addObjectsFromArray:[objects valueForKey:@"youtubeURL"]];
             [quarter addObjectsFromArray:[objects valueForKey:@"quarter"]];
             
             [self.videosTableView reloadData];
-        } else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            NSLog(@"Error: %@", errorString);
         }
     }];
 }

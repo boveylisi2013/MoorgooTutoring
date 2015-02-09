@@ -146,8 +146,9 @@
                                         PFObject *transaction = [PFObject objectWithClassName:@"transaction"];
                                         
                                         [transaction setObject:currentUser.objectId forKey:@"user_id"];
-                                        [transaction setObject:self.course forKey:@"class"];
+                                        [transaction setObject:self.course forKey:@"classname"];
                                         [transaction setObject:self.date forKey:@"date"];
+                                        [transaction setObject:@"Paid" forKey:@"status"];
                                         [transaction setObject:[NSNumber numberWithInteger:[self.hour integerValue]] forKey:@"hours"];
                                         [transaction setObject:[NSNumber numberWithInteger:amount] forKey:@"amount"];
                                         [transaction saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

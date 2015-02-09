@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PVb-Y8-4uo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="PVb-Y8-4uo">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -1233,7 +1233,7 @@ Salary: 20$/h</string>
             </objects>
             <point key="canvasLocation" x="228" y="1364"/>
         </scene>
-        <!--Payment History View Controller-->
+        <!--History-->
         <scene sceneID="Q6R-Y1-ev3">
             <objects>
                 <viewController id="VMY-pJ-kSP" customClass="PaymentHistoryViewController" sceneMemberID="viewController">
@@ -1305,6 +1305,7 @@ Salary: 20$/h</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="History" id="BMV-lK-Om0"/>
                     <connections>
                         <outlet property="transInfoTableView" destination="tZn-8d-tvu" id="YkI-Or-lTt"/>
                     </connections>
@@ -1403,7 +1404,8 @@ Salary: 20$/h</string>
                                     <constraint firstAttribute="height" constant="30" id="Ph7-Kv-o0d"/>
                                     <constraint firstAttribute="width" constant="213" id="qt8-sd-sny"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="0.0" y="0.0" width="213" height="30"/>
@@ -1817,7 +1819,7 @@ Salary: 20$/h</string>
         <image name="iconConfirmation.png" width="130" height="131"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RoX-8j-c6E"/>
-        <segue reference="3Gz-XJ-fDt"/>
+        <segue reference="okZ-5Z-5RS"/>
+        <segue reference="e4l-iv-apV"/>
     </inferredMetricsTieBreakers>
 </document>

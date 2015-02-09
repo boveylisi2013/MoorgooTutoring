@@ -60,9 +60,6 @@
             [amount addObjectsFromArray:[objects valueForKey:@"amount"]];                        
             
             [self.transInfoTableView reloadData];
-        } else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            NSLog(@"Error: %@", errorString);
         }
     }];
 }

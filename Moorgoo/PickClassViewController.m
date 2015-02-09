@@ -107,7 +107,6 @@
 -(void)textFieldDidChange:(UITextField *)textField
 {
     BOOL textFieldIsEmpty = (self.pickHelpTextField.text.length == 0 || self.specificClassTextField.text.length == 0);
-    //NSLog(@"THE TEXTFIELD IS CHANGED!!");
     if (textField.text.length == 0)
     {
         [self.tableView setHidden:YES];
@@ -183,10 +182,6 @@
 #pragma mark- classTableView delegete methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //NSLog(@"numberOfRowsInSection is called");
-    //NSLog(@"classitems size :%lu",(unsigned long)[classItems count]);
-    //NSLog(@"in applytutorviewcontroller: %@",classItems);
-    
     if ([classItems count] != 0) return [classItems count];
     else    return 1;
 }
@@ -261,7 +256,6 @@
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component
 {
-    NSLog(@"Selected Row %ld", (long)row);
     if(pickerView == helpPicker)
         self.pickHelpTextField.text = [NSString stringWithFormat:@"%@", [pickerHelpArray objectAtIndex:row]];
     else

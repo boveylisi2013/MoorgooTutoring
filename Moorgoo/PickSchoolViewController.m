@@ -61,7 +61,6 @@
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component
 {
-    NSLog(@"Selected Row %ld", (long)row);
     if(pickerView == schoolPicker)
         self.pickSchoolTextField.text = [NSString stringWithFormat:@"%@", [pickerSchoolArray objectAtIndex:row]];
     else

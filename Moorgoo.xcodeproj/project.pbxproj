@@ -41,7 +41,6 @@
 		4299EA711A56295E00DB15D1 /* PickClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA6C1A56295E00DB15D1 /* PickClassViewController.m */; };
 		4299EA721A56295E00DB15D1 /* PickSchoolViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA6E1A56295E00DB15D1 /* PickSchoolViewController.m */; };
 		4299EA731A56295E00DB15D1 /* PickTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA701A56295E00DB15D1 /* PickTimeViewController.m */; };
-		4299EA7F1A5899D700DB15D1 /* lajolla.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4299EA7E1A5899D700DB15D1 /* lajolla.gif */; };
 		4299EA821A58AA6100DB15D1 /* PaymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA811A58AA6100DB15D1 /* PaymentViewController.m */; };
 		4299EAC31A58C3D700DB15D1 /* STPCheckoutView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EA8A1A58C3D700DB15D1 /* STPCheckoutView.m */; };
 		4299EAE41A58C3D700DB15D1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4299EAC21A58C3D700DB15D1 /* MBProgressHUD.m */; };
@@ -154,7 +153,6 @@
 		4299EA6E1A56295E00DB15D1 /* PickSchoolViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickSchoolViewController.m; sourceTree = "<group>"; };
 		4299EA6F1A56295E00DB15D1 /* PickTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickTimeViewController.h; sourceTree = "<group>"; };
 		4299EA701A56295E00DB15D1 /* PickTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickTimeViewController.m; sourceTree = "<group>"; };
-		4299EA7E1A5899D700DB15D1 /* lajolla.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = lajolla.gif; sourceTree = "<group>"; };
 		4299EA801A58AA6100DB15D1 /* PaymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaymentViewController.h; sourceTree = "<group>"; };
 		4299EA811A58AA6100DB15D1 /* PaymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaymentViewController.m; sourceTree = "<group>"; };
 		4299EA891A58C3D700DB15D1 /* STPCheckoutView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCheckoutView.h; sourceTree = "<group>"; };
@@ -407,7 +405,6 @@
 		42898D611A54BAA9006E2DBC /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				4299EA7E1A5899D700DB15D1 /* lajolla.gif */,
 				4299EB191A58EB9100DB15D1 /* creditCardBg.png */,
 				4299EB1A1A58EB9100DB15D1 /* creditCardBg@2x.png */,
 				4299EB4C1A58F36000DB15D1 /* iconConfirmation.png */,
@@ -680,7 +677,6 @@
 				4299EB3E1A58ECE800DB15D1 /* jcb.png in Resources */,
 				13A90E3C1A4D41EF00CCCE1B /* LaunchScreen.xib in Resources */,
 				4299EB3D1A58ECE800DB15D1 /* discover@2x.png in Resources */,
-				4299EA7F1A5899D700DB15D1 /* lajolla.gif in Resources */,
 				4299EB341A58ECE800DB15D1 /* amex.png in Resources */,
 				4299EB361A58ECE800DB15D1 /* cvc-amex.png in Resources */,
 				13A90E391A4D41EF00CCCE1B /* Images.xcassets in Resources */,

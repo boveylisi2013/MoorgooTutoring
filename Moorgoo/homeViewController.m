@@ -84,12 +84,10 @@
     if ([[currentUser valueForKey:@"isTutor"]  isEqual: @(TRUE)])
     {
         [self performSegueWithIdentifier:@"BeATutor" sender:self];
-        NSLog(@"is a tutor");
     }
     else
     {
         [self performSegueWithIdentifier:@"NotTutor" sender:self];
-        NSLog(@"is a NOT tutor");
     }
 }
 

@@ -171,10 +171,6 @@
             [array addObjectsFromArray:[objects valueForKey:@"classname"]];
             [array insertObject:@"" atIndex:0];
             [array sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-            //NSLog(@"Successfully retrieved: %@", array);
-        } else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            NSLog(@"Error: %@", errorString);
         }
     }];
 }
@@ -184,7 +180,6 @@
 // this method is added as a selector to specficClassTextField
 -(void)textFieldDidChange:(UITextField *)textField
 {
-    //NSLog(@"THE TEXTFIELD IS CHANGED!!");
     if (textField.text.length == 0) [self.classesTableView setHidden:YES];
     else
     {
@@ -387,10 +382,6 @@
 #pragma mark- classTableView delegete methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    //NSLog(@"numberOfRowsInSection is called");
-    //NSLog(@"classitems size :%lu",(unsigned long)[classItems count]);
-    //NSLog(@"in applytutorviewcontroller: %@",classItems);
-    
     if ([classItems count] != 0) return [classItems count];
     else    return 1;
 }

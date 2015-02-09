@@ -174,7 +174,6 @@
     NSDateComponents *weekDayComps = [gregorian components:(NSDayCalendarUnit | NSWeekdayCalendarUnit) fromDate:chosenDate];
     NSInteger weekday = [weekDayComps weekday];
     NSString *weekdayString = weekdays[weekday - 1];
-    NSLog(@"dddddd %@", availableWeekdays);
     
     if(![availableWeekdays containsObject:weekdayString])
     {
@@ -221,7 +220,6 @@
       didSelectRow:(NSInteger)row
        inComponent:(NSInteger)component
 {
-    NSLog(@"Selected Row %ld", (long)row);
     if(pickerView == hourPicker)
         self.pickHourTextField.text = [NSString stringWithFormat:@"%@", [pickerHourArray objectAtIndex:row]];
     else
