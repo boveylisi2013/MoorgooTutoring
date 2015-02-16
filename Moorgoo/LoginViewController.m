@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController () <UITextFieldDelegate>
+@property (weak, nonatomic) IBOutlet UIButton *loginbutton;
 
 @end
 
@@ -18,6 +19,10 @@
     [super viewDidLoad];
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    self.loginbutton.layer.borderColor = [[UIColor whiteColor] CGColor];
+    self.loginbutton.layer.borderWidth = 2.0f;
+    [self.view addSubview:self.loginbutton];
     
     [self.view addGestureRecognizer:tap];
     self.userTextField.delegate = self;

@@ -14,6 +14,9 @@
 {
     NSMutableArray *classes;
 }
+@property (weak, nonatomic) IBOutlet UIImageView *homeImage;
+@property (weak, nonatomic) IBOutlet UIButton *needatutor;
+@property (weak, nonatomic) IBOutlet UILabel *greetLabel;
 @end
 
 @implementation homeViewController
@@ -32,9 +35,32 @@
     BOOL isTutor = [[currentUser objectForKey:@"isTutor"] boolValue];
     if(!isTutor)
     {
-        [self.tutorDashBoardBtn setTitle:@"Want to be a tutor" forState:UIControlStateNormal];
+        [self.tutorDashBoardBtn setTitle:@"Be A Tutor" forState:UIControlStateNormal];
     }
     
+    // get current date/time
+    NSDate *today = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    // display in 12HR/24HR (i.e. 11:25PM or 23:25) format according to User Settings
+    [dateFormatter setDateFormat:@"HH"];
+    int currentHour = [[dateFormatter stringFromDate:today] intValue];
+    
+    if(currentHour > 5 && currentHour <= 12)
+    {
+        self.greetLabel.text = @"Good Morning!";
+    }
+    else if (currentHour > 12 && currentHour <= 18)
+    {
+        self.greetLabel.text = @"Good Afternoon!";
+    }
+    else if (currentHour > 18 && currentHour <= 23)
+    {
+        self.greetLabel.text = @"Good Evening!";
+    }
+    else if (currentHour >= 0 && currentHour < 5)
+    {
+        self.greetLabel.text = @"Good Night!";
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -104,6 +130,11 @@
 - (IBAction)paymentHistoryButtonPressed:(UIButton *)sender
 {
     [self performSegueWithIdentifier:@"paymentHistory" sender:self];
+}
+
+- (IBAction)aboutUsButtonPressed:(UIButton *)sender
+{
+    [self performSegueWithIdentifier:@"GoToAboutUs" sender:self];
 }
 
 // Former Trial: Tried to query the data in homeViewController and passed it into the

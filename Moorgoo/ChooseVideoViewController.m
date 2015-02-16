@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.videosTableView.rowHeight = 44;
     
     self.videosTableView.delegate = self;
     self.videosTableView.dataSource = self;

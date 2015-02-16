@@ -38,21 +38,6 @@
 //        filter.alpha = 0.05;
 //        [self.view addSubview:filter];
     
-    
-    UILabel *welcomeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.bounds.size.width, 100)];
-    welcomeLabel.text = @"MOORGOO";
-    welcomeLabel.textColor = [UIColor whiteColor];
-    welcomeLabel.font = [UIFont systemFontOfSize:50];
-    welcomeLabel.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:welcomeLabel];
-    
-    UILabel *welcomeLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, self.view.bounds.size.width, 100)];
-    welcomeLabel2.text = @"TUTOR";
-    welcomeLabel2.textColor = [UIColor whiteColor];
-    welcomeLabel2.font = [UIFont systemFontOfSize:50];
-    welcomeLabel2.textAlignment = NSTextAlignmentCenter;
-    [self.view addSubview:welcomeLabel2];
-    
     self.signinButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     self.signinButton.layer.borderWidth = 2.0f;
 
