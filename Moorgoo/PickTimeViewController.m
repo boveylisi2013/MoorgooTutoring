@@ -116,17 +116,13 @@
                       }
                       self.availableDaysLabel.text = availableDays;
                   }
-                  else
-                  {
-                      NSString *errorString = [[error userInfo] objectForKey:@"error"];
-                      NSLog(@"Error: %@", errorString);
+                  else {
+                      [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
                   }
               }];
          }
-         else
-         {
-             NSString *errorString = [[schoolError userInfo] objectForKey:@"error"];
-             NSLog(@"Error: %@", errorString);
+         else {
+             [[[UIAlertView alloc] initWithTitle:@"Error" message:[schoolError userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
          }
      }];
 }

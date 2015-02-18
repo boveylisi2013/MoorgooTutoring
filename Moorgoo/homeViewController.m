@@ -15,7 +15,7 @@
     NSMutableArray *classes;
 }
 @property (weak, nonatomic) IBOutlet UIImageView *homeImage;
-@property (weak, nonatomic) IBOutlet UIButton *needatutor;
+
 @property (weak, nonatomic) IBOutlet UILabel *greetLabel;
 @end
 
@@ -125,6 +125,32 @@
 - (IBAction)accountSettingPressed:(UIButton *)sender
 {
     [self performSegueWithIdentifier:@"accountSetting" sender:self];
+}
+
+- (IBAction)needATutorPressed:(UIButton *)sender
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"dictbase"];
+    [query whereKey:@"keyColumn" equalTo:@"isTutorOrderOpen"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSString *isOpen = [NSString stringWithFormat:@"%@", [[objects valueForKey:@"valueColumn"] objectAtIndex:0]];
+            if(![isOpen isEqualToString:@"yes"]) {
+                NSString *notice = @"Sorry, our tutoring service is out of order. Please try later.";
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Attention"
+                                                                message:notice
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Try Later!"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+            else {
+                [self performSegueWithIdentifier:@"needTutor" sender:self];
+            }
+        }
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+    }];
 }
 
 - (IBAction)paymentHistoryButtonPressed:(UIButton *)sender

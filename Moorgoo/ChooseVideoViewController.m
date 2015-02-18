@@ -49,6 +49,9 @@
             
             [self.videosTableView reloadData];
         }
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
     }];
 }
 #pragma mark- classTableView delegete methods

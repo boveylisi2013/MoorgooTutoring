@@ -61,6 +61,9 @@
             
             [self.transInfoTableView reloadData];
         }
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
     }];
 }
 

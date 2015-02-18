@@ -172,6 +172,9 @@
             [array insertObject:@"" atIndex:0];
             [array sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         }
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
     }];
 }
 

@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSString *STRIPE_PUBLISHABLE_KEY = @"pk_test_hC4pJSauMzNycdhj0cRfysp6";
+    NSString *STRIPE_PUBLISHABLE_KEY = @"pk_live_ZscnNFJkGGO0HihDErAQqTVC";
 
     
     //keyboard disappear when tapping outside of text field
@@ -38,8 +38,18 @@
     self.dateTimeLabel.text = self.date;
     self.hourLabel.text = self.hour;
     
-    amount = [[self.hour substringToIndex:1] integerValue] * 25;
-    self.amountLabel.text = [NSString stringWithFormat:@"$%li",(long)amount];
+    PFQuery *query = [PFQuery queryWithClassName:@"dictbase"];
+    [query whereKey:@"keyColumn" equalTo:@"tutorPrice"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            NSString *price = [NSString stringWithFormat:@"%@", [[objects valueForKey:@"valueColumn"] objectAtIndex:0]];
+            amount = [[self.hour substringToIndex:1] integerValue] * [price intValue];
+            self.amountLabel.text = [NSString stringWithFormat:@"$%li",(long)amount];
+        }
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        }
+    }];
     
     UIImage *creditCardImage = [UIImage imageNamed:@"creditCardBg"];
     UIImageView *creditCardView = [[UIImageView alloc] initWithImage:creditCardImage];

@@ -113,9 +113,9 @@
             [pickerSchoolArray insertObject:@"" atIndex:0];
             [pickerSchoolArray sortUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
             //NSLog(@"Successfully retrieved: %@", pickerSchoolArray);
-        } else {
-            NSString *errorString = [[error userInfo] objectForKey:@"error"];
-            NSLog(@"Error: %@", errorString);
+        }
+        else {
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         }
     }];
 }

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EntranceViewController : UIViewController
+@interface EntranceViewController : UIViewController <UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *signinButton;
 @property (weak, nonatomic) IBOutlet UIButton *registerButton;

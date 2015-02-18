@@ -92,10 +92,8 @@
                 }
             }];
       }
-      else
-      {
-          NSString *errorString = [[schoolError userInfo] objectForKey:@"error"];
-          NSLog(@"Error: %@", errorString);
+      else {
+          [[[UIAlertView alloc] initWithTitle:@"Error" message:[schoolError userInfo][@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
       }
     }];
     
