@@ -171,18 +171,16 @@
                                             }
                                         }];
                                         
+                                        ///////////////////
+                                        [PFCloud callFunctionInBackground:@"emailAfterTransaction"
+                                                           withParameters:productInfo
+                                                                    block:^(id object, NSError *error) {}];
+                                                      
                                         /////////////////
                                         [self performSegueWithIdentifier:@"paymentToFinish" sender:self];
                                         [alert show];
                                     }
                                 }];
-    
-    
-    
-    [PFCloud callFunctionInBackground:@"emailAfterTransaction"
-                       withParameters:productInfo
-                                block:^(id object, NSError *error) {}];
-    
 }
 
 @end
